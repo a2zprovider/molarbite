@@ -10,36 +10,36 @@
     </div>
     <div class="flex justify-center items-center activate-nav gap-2">
       <div class="flex flex-col justify-center items-center">
-        <div class="h-[28px] w-[28px] rounded-full bg-[#C4C4C4]"></div>
+        <div class="h-[28px] w-[28px] rounded-full activate"></div>
       </div>
       <div class="w-[100px] border-[1px] border-[#BDBDBD]"></div>
       <div class="flex flex-col justify-center items-center">
-        <div class="h-[28px] w-[28px] rounded-full bg-[#C4C4C4]"></div>
+        <div class="h-[28px] w-[28px] rounded-full activate"></div>
         <!-- <p>Basic Details</p> -->
       </div>
       <div class="w-[100px] border-[1px] border-[#BDBDBD]"></div>
       <div class="flex flex-col justify-center items-center">
-        <div class="h-[28px] w-[28px] rounded-full bg-[#C4C4C4]"></div>
+        <div class="h-[28px] w-[28px] rounded-full activate"></div>
         <!-- <p>Basic Details</p> -->
       </div>
       <div class="w-[100px] border-[1px] border-[#BDBDBD]"></div>
       <div class="flex flex-col justify-center items-center">
-        <div class="h-[28px] w-[28px] rounded-full bg-[#ccc]"></div>
+        <div class="h-[28px] w-[28px] rounded-full deactivate"></div>
         <!-- <p>Basic Details</p> -->
       </div>
     </div>
     <div class="mt-2 mb-6 flex justify-center items-center activate-nav gap-2">
-      <p class="font-inter text-sm font-medium text-[#4F4F4F]">Basic Details</p>
+      <p class="font-inter text-sm font-medium activate-title">Basic Details</p>
       <div class="w-[35px]"></div>
-      <p class="font-inter text-sm font-medium text-[#4F4F4F]">
+      <p class="font-inter text-sm font-medium activate-title">
         Dental History
       </p>
       <div class="w-[35px]"></div>
-      <p class="font-inter text-sm font-medium text-[#4F4F4F]">
+      <p class="font-inter text-sm font-medium activate-title">
         Medical history
       </p>
       <div class="w-[35px]"></div>
-      <p class="font-inter text-sm font-medium text-[#ccc]">Agreement</p>
+      <p class="font-inter text-sm font-medium deactivate-title">Agreement</p>
     </div>
     <div class="bg-[#fff] p-6 border-[1px] border-[#0052CC] rounded-xl mx-10">
       <div>
@@ -470,5 +470,19 @@ const state = reactive<{
   pregnant: "",
 });
 </script>
-
-<style scoped></style>
+<style scoped>
+.activate {
+  border: 7px solid;
+  border-color: #0052cc;
+  background: transparent;
+}
+.deactivate {
+  @apply bg-[#ccc];
+}
+.activate-title {
+  @apply text-[#4F4F4F];
+}
+.deactivate-title {
+  @apply text-[#ccc];
+}
+</style>
