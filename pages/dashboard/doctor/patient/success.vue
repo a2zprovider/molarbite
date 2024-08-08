@@ -14,6 +14,7 @@
     </div>
     <div class="flex justify-center items-center gap-5 mt-4">
       <ReusablesBaseButton
+        @click="$router.push('/dashboard/doctor/patient/view')"
         label="View"
         iconClass="text-white"
         icon-left="eye"

@@ -33,6 +33,7 @@
               {{ header }}
             </th>
             <th
+              v-if="view_btn || edit_btn || delete_btn"
               class="h-[48px] text-[#637381] text-base font-medium px-6 py-2.5 whitespace-nowrap text-left"
             >
               Action
@@ -70,6 +71,7 @@
               </slot>
             </td>
             <td
+              v-if="view_btn || edit_btn || delete_btn"
               class="flex items-center gap-2 h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
             >
               <ReusablesBaseButton
