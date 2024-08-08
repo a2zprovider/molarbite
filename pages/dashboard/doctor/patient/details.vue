@@ -144,7 +144,7 @@
     <ReusablesModal
       className="w-[424px]"
       :isVisible="state.isVisible1"
-      :onClose="closeModal"
+      :onClose="closeModal1"
     >
       <div>
         <div class="p-2 pt-1">

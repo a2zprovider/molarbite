@@ -360,7 +360,7 @@
 
     <div class="flex justify-center items-center gap-10 mt-4">
       <ReusablesBaseButton
-        @click="$router.push('/dashboard/doctor/patient/success')"
+        @click="$router.push('/dashboard/doctor/patient/details')"
         label="Go Back"
         iconClass="text-white"
         icon-left="arrow-left"
