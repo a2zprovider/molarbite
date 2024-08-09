@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col gap-2 items-center text-center bg-white p-4 mt-2 rounded-xl w-full">
-    <p class="text-center font-medium text-[#559AFF] text-[18px] leading-7 py-4">
+  <div class="flex flex-col gap-2 items-center text-center bg-white p-5 mt-2 rounded-xl w-full">
+    <p class="text-center font-medium text-[#559AFF] text-[18px] leading-7 mb-3">
       Select Availability
     </p>
-    <div class="font-light w-full text-left text-lg">
+    <div class="font-light w-full text-left text-lg mb-2">
       <div class="grid grid-cols-7 gap-2">
         <div         
           v-for="(item, key) in branches"

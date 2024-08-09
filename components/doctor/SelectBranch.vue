@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col gap-2 items-center text-center bg-white p-4 mt-2 rounded-xl w-full">
-    <p class="text-center font-medium text-[#559AFF] text-[18px] leading-7 py-4">
-      Select Branch
+  <div class="flex flex-col gap-2 items-center text-center bg-white p-5 mt-2 rounded-xl w-full">
+    <p class="text-center font-medium text-[#559AFF] text-[18px] leading-7">
+      Select Branchs
     </p>
     <div class="font-light w-full text-left text-lg">
       <div class="grid grid-cols-4 gap-4">

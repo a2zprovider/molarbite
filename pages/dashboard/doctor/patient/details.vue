@@ -42,6 +42,7 @@
       </div>
       <div class="flex items-center gap-2">
         <ReusablesBaseButton
+          @click="$router.push('/dashboard/doctor/patient/summary')"
           label="Go to File"
           iconClass="text-[#696F8C]"
           icon-left="files"
