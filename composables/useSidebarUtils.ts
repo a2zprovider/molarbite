@@ -36,53 +36,53 @@ export default () => {
         }
       ]
     },
-    // {
-    //   title: 'Components',
-    //   icon: 'mdi-puzzle',
-    //   list: [
-    //     {
-    //       name: 'Appointments',
-    //       icon: 'calendar',
-    //       show: false,
-    //       route: '/dashboard'
-    //     },
-    //     {
-    //       name: 'Patient Management',
-    //       icon: 'user',
-    //       show: false,
-    //       route: '/dashboard'
-    //     },
-    //     {
-    //       name: 'Doctors',
-    //       icon: 'doctor',
-    //       show: false,
-    //       route: '/dashboard'
-    //     },
-    //     {
-    //       name: 'Team Member',
-    //       icon: 'users',
-    //       show: false,
-    //       route: '/dashboard'
-    //     },
-    //     {
-    //       name: 'Accounts',
-    //       icon: 'book-open-page-variant',
-    //       show: false,
-    //       sub: [
-    //         {
-    //           name: 'Dashboard',
-    //           icon: 'chart-timeline',
-    //           route: '/'
-    //         },
-    //         {
-    //           name: 'Patient Ledger',
-    //           icon: 'users',
-    //           route: '/'
-    //         }
-    //       ]
-    //     }
-    //   ]
-    // }
+    {
+      title: 'Components',
+      icon: 'mdi-puzzle',
+      list: [
+        //     {
+        //       name: 'Appointments',
+        //       icon: 'calendar',
+        //       show: false,
+        //       route: '/dashboard'
+        //     },
+        {
+          name: 'Patient Management',
+          icon: 'user',
+          show: false,
+          route: '/dashboard/doctor/patient'
+        },
+        {
+          name: 'Doctors',
+          icon: 'doctor',
+          show: false,
+          route: '/dashboard/doctors'
+        },
+        {
+          name: 'Team Member',
+          icon: 'users',
+          show: false,
+          route: '/dashboard/teams'
+        },
+        {
+          name: 'Accounts',
+          icon: 'book-open-page-variant',
+          show: false,
+          sub: [
+            {
+              name: 'Dashboard',
+              icon: 'chart-timeline',
+              route: '/dashboard/account'
+            },
+            {
+              name: 'Patient Ledger',
+              icon: 'users',
+              route: '/dashboard/account/ledger'
+            }
+          ]
+        }
+      ]
+    }
   ]);
 
   const toggleDropdown = (item: any): void => {

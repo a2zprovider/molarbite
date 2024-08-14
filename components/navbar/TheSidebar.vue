@@ -113,7 +113,7 @@ defineProps<{ nav: boolean }>();
 }
 
 .inner-sidebar-active {
-  @apply rounded-md text-priText font-semibold !important;
+  @apply rounded-md text-white font-semibold !important;
 }
 
 .sidebar-hover {
@@ -121,7 +121,8 @@ defineProps<{ nav: boolean }>();
 }
 
 .inner-sidebar-hover {
-  @apply p-3 transition-all ease-in-out duration-300 hover:text-priText cursor-pointer;
+  @apply p-3 transition-all ease-in-out duration-300 cursor-pointer;
+  /* @apply p-3 transition-all ease-in-out duration-300 hover:text-priText cursor-pointer; */
 }
 </style>
 

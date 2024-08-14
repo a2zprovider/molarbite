@@ -58,7 +58,7 @@
         @click="changeTab('treatment-plan-proposal')"
         class="px-4 py-2 min-w-[130px] font-medium text-sm lending-4 border border-r-[0] border-[#D8DAE5] cursor-pointer"
         :class="
-          tab == 'treatment-plan-proposal' ? 'tab-active' : 'tab-inactive'
+          state.tab == 'treatment-plan-proposal' ? 'tab-active' : 'tab-inactive'
         "
       >
         Treatment Plan & Proposal
@@ -82,7 +82,10 @@
       <div class="grid grid-cols-2 gap-4">
         <div class="bg-white p-5">
           <p class="font-bold text-2xl text-black mb-5">Summary</p>
-          <div class="flex justify-between h-[70px]">
+          <div class="flex justify-between h-[70px] relative">
+            <div
+              class="absolute border-l border-[#828282] top-[25%] bottom-[5%] left-[6px]"
+            ></div>
             <div class="flex gap-2">
               <div class="h-[15px] w-[15px] rounded-full bg-[#2F80ED]"></div>
               <div>
@@ -93,7 +96,11 @@
               3:56 PM 2020-07-28
             </p>
           </div>
-          <div class="flex justify-between h-[70px]">
+
+          <div class="flex justify-between h-[70px] relative">
+            <div
+              class="absolute border-l border-[#828282] top-[25%] bottom-[5%] left-[6px]"
+            ></div>
             <div class="flex gap-2">
               <div class="h-[15px] w-[15px] rounded-full bg-[#2F80ED]"></div>
               <div>
@@ -109,7 +116,10 @@
               4:10 PM 2020-07-28
             </p>
           </div>
-          <div class="flex justify-between h-[70px]">
+          <div class="flex justify-between h-[70px] relative">
+            <div
+              class="absolute border-l border-[#828282] top-[25%] bottom-[5%] left-[6px]"
+            ></div>
             <div class="flex gap-2">
               <div class="h-[15px] w-[15px] rounded-full bg-[#2F80ED]"></div>
               <div>
@@ -122,7 +132,10 @@
               4:20 PM 2020-07-28
             </p>
           </div>
-          <div class="flex justify-between h-[70px]">
+          <div class="flex justify-between h-[70px] relative">
+            <div
+              class="absolute border-l border-[#828282] top-[25%] bottom-[5%] left-[6px]"
+            ></div>
             <div class="flex gap-2">
               <div class="h-[15px] w-[15px] rounded-full bg-[#2F80ED]"></div>
               <div>
@@ -141,7 +154,7 @@
               4:30 PM 2020-07-28
             </p>
           </div>
-          <div class="flex justify-between h-[70px]">
+          <div class="flex justify-between h-[70px] relative">
             <div class="flex gap-2">
               <div class="h-[15px] w-[15px] rounded-full bg-[#2F80ED]"></div>
               <div>
@@ -162,7 +175,6 @@
           <p class="font-bold text-2xl text-black mb-5">
             Treatment Plan Summary
           </p>
-
           <div class="mb-5 flex items-center text-center">
             <div
               class="px-3 py-2 font-inter font-medium text-xs lending-4 text-[#3366FF] bg-[#F3F6FF] rounded-l border border-r-[0] border-[#D8DAE5] cursor-pointer"
@@ -210,7 +222,7 @@
               >
             </div>
           </div>
-          <div class="border rounded p-3">
+          <div class="border rounded p-3 mb-4">
             <div class="flex justify-between items-center mb-3">
               <div class="flex items-center gap-2">
                 <p
@@ -325,6 +337,7 @@
               Recent Xrays/Images
             </p>
             <ReusablesBaseButton
+              @click="state.isVisible = true"
               label="Upload Files"
               iconClass="text-white"
               icon-left="cloud-upload"
@@ -332,8 +345,11 @@
               className="flex justify-center items-center rounded bg-[#0052CC] px-4 py-2 text-sm font-normal leading-4 text-white"
             />
           </div>
-          <div class="flex gap-3 mb-3">
+          <div class="flex gap-3 mb-3 relative">
             <div class="h-[15px] w-[15px] rounded-full bg-[#2F80ED]"></div>
+            <div
+              class="absolute border-l border-[#828282] top-[25px] bottom-[0px] left-[6px]"
+            ></div>
             <div class="flex gap-3 bg-[#E3EEFF] w-full rounded p-2.5">
               <div>
                 <img
@@ -380,8 +396,11 @@
             </div>
           </div>
 
-          <div class="flex gap-3 mb-3">
+          <div class="flex gap-3 mb-3 relative">
             <div class="h-[15px] w-[15px] rounded-full bg-[#2F80ED]"></div>
+            <div
+              class="absolute border-l border-[#828282] top-[25px] bottom-[0px] left-[6px]"
+            ></div>
             <div class="flex gap-3 bg-[#E3EEFF] w-full rounded p-2.5">
               <div>
                 <img
@@ -436,8 +455,11 @@
           <div class="flex justify-between items-center">
             <p class="font-bold text-2xl text-black mb-5">Notes</p>
           </div>
-          <div class="flex gap-3 mb-3">
+          <div class="flex gap-3 mb-3 relative">
             <div class="h-[15px] w-[15px] rounded-full bg-[#2F80ED]"></div>
+            <div
+              class="absolute border-l border-[#828282] top-[25px] bottom-[0px] left-[6px]"
+            ></div>
             <div class="flex flex-col gap-3 bg-[#E3EEFF] w-full rounded p-2.5">
               <p class="font-normal text-sm text-black leading-4">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -463,8 +485,11 @@
               </div>
             </div>
           </div>
-          <div class="flex gap-3 mb-3">
+          <div class="flex gap-3 mb-3 relative">
             <div class="h-[15px] w-[15px] rounded-full bg-[#2F80ED]"></div>
+            <div
+              class="absolute border-l border-[#828282] top-[25px] bottom-[0px] left-[6px]"
+            ></div>
             <div class="flex flex-col gap-3 bg-[#E3EEFF] w-full rounded p-2.5">
               <p class="font-normal text-sm text-black leading-4">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -485,8 +510,11 @@
               </div>
             </div>
           </div>
-          <div class="flex gap-3 mb-3">
+          <div class="flex gap-3 mb-3 relative">
             <div class="h-[15px] w-[15px] rounded-full bg-[#2F80ED]"></div>
+            <div
+              class="absolute border-l border-[#828282] top-[25px] bottom-[0px] left-[6px]"
+            ></div>
             <div class="flex flex-col gap-3 bg-[#E3EEFF] w-full rounded p-2.5">
               <p class="font-normal text-sm text-black leading-4">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -527,6 +555,7 @@
         </ReusablesBaseTable>
         <div class="flex items-center justify-center mt-10">
           <ReusablesBaseButton
+            @click="state.isVisible1 = true"
             label="Add"
             className="flex justify-center items-center rounded w-[120px] bg-[#0052CC] p-2.5 text-sm font-normal leading-4 text-white"
           />
@@ -550,13 +579,13 @@
         </ReusablesBaseTable>
         <div class="flex items-center justify-center mt-10">
           <ReusablesBaseButton
+            @click="state.isVisible2 = true"
             label="Add"
             className="flex justify-center items-center rounded w-[120px] bg-[#0052CC] p-2.5 text-sm font-normal leading-4 text-white"
           />
         </div>
       </div>
     </div>
-
     <div v-if="state.tab == 'treatment'">
       <div>
         <ReusablesBaseTable
@@ -580,7 +609,6 @@
         </div>
       </div>
     </div>
-
     <div v-if="state.tab == 'prescribe'">
       <div>
         <ReusablesBaseTable
@@ -598,7 +626,6 @@
         </ReusablesBaseTable>
       </div>
     </div>
-
     <div v-if="state.tab == 'communication'">
       <div>
         <ReusablesBaseTable
@@ -616,6 +643,196 @@
         </ReusablesBaseTable>
       </div>
     </div>
+
+    <ReusablesModal
+      className="w-[424px]"
+      :isVisible="state.isVisible"
+      :onClose="closeModal"
+    >
+      <div>
+        <div class="p-2 pt-1">
+          <p
+            class="text-lg font-medium text-[#559AFF] leading-5 text-center mb-4"
+          >
+            Upload Files
+          </p>
+          <div class="mb-2">
+            <ReusablesBaseSelect
+              v-model="state.type_name"
+              label="Type*"
+              :options="types"
+              placeholder="Type"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseSelect
+              v-model="state.age"
+              label="Age Group*"
+              :options="ages"
+              placeholder="Age"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseFile
+              v-model="state.file"
+              label="File*"
+              file-type="image/*"
+              placeholder="File"
+              className="flex relative justify-center w-full text-xs rounded border-[1px] border-[#C1C4D6] p-1.5 px-2 text-[#8F95B2] ring-0 ring-inset ring-[#8F95B2] placeholder:text-[#8F95B2] outline-0 focus:outline-0 focus:ring-0 focus:ring-inset focus:ring-[#8F95B2] file:text-[#8F95B2] file:border-0 file:border-l-[1px] file:border-[#C1C4D6] file:px-2 file:rounded file:bg-transparent file:absolute file:right-0 file:top-0 file:bottom-0 file:text-foreground file:text-xs file:font-medium"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseInput
+              label="Tooth Number*"
+              v-model="state.tooth_number"
+              type="taxt"
+              placeholder="Tooth Number"
+            />
+          </div>
+          <div class="flex justify-center items-center gap-2">
+            <ReusablesBaseButton
+              @click="state.isVisible = false"
+              label="Save"
+              className="flex justify-center items-center min-w-[90px] h-[32px] rounded bg-[#0052CC] px-3 py-1 text-xs font-medium leading-5 text-white shadow-sm"
+            />
+          </div>
+        </div>
+      </div>
+    </ReusablesModal>
+
+    <ReusablesModal
+      className="w-[424px]"
+      :isVisible="state.isVisible1"
+      :onClose="closeModal1"
+    >
+      <div>
+        <div class="p-2 pt-1">
+          <p
+            class="text-lg font-medium text-[#559AFF] leading-5 text-center mb-4"
+          >
+            Add Diagnostics
+          </p>
+          <div class="mb-2">
+            <ReusablesBaseSelect
+              v-model="state.type_name1"
+              label="Type*"
+              :options="types1"
+              placeholder="Type"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseSelect
+              v-model="state.location"
+              label="Location*"
+              :options="locations"
+              placeholder="Location"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseInput
+              label="Price*"
+              v-model="state.price"
+              type="taxt"
+              placeholder="₹ 0.00"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseInput
+              label="Date*"
+              v-model="state.date"
+              type="date"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseInput
+              label="Observations*"
+              v-model="state.observations"
+              type="taxt"
+              placeholder="Observations"
+            />
+          </div>
+          <div class="mb-5">
+            <ReusablesBaseFile
+              v-model="state.file1"
+              label="File*"
+              file-type="image/*"
+              placeholder="File"
+              className="flex relative justify-center w-full text-xs rounded border-[1px] border-[#C1C4D6] p-1.5 px-2 text-[#8F95B2] ring-0 ring-inset ring-[#8F95B2] placeholder:text-[#8F95B2] outline-0 focus:outline-0 focus:ring-0 focus:ring-inset focus:ring-[#8F95B2] file:text-[#8F95B2] file:border-0 file:border-l-[1px] file:border-[#C1C4D6] file:px-2 file:rounded file:bg-transparent file:absolute file:right-0 file:top-0 file:bottom-0 file:text-foreground file:text-xs file:font-medium"
+            />
+          </div>
+          <div class="flex justify-center items-center gap-2">
+            <ReusablesBaseButton
+              @click="state.isVisible1 = false"
+              label="Save"
+              className="flex justify-center items-center min-w-[90px] h-[32px] rounded bg-[#0052CC] px-3 py-1 text-xs font-medium leading-5 text-white shadow-sm"
+            />
+          </div>
+        </div>
+      </div>
+    </ReusablesModal>
+
+    <ReusablesModal
+      className="w-[424px]"
+      :isVisible="state.isVisible2"
+      :onClose="closeModal2"
+    >
+      <div>
+        <div class="p-2 pt-1">
+          <p
+            class="text-lg font-medium text-[#559AFF] leading-5 text-center mb-4"
+          >
+            Add Diagnosis
+          </p>
+          <div class="mb-2">
+            <ReusablesBaseSelect
+              v-model="state.tooth_number1"
+              label="Tooth Number*"
+              :options="tooth_numbers"
+              placeholder="Tooth Number"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseSelect
+              v-model="state.tooth_surface"
+              label="Tooth Surface*"
+              :options="tooth_surfaces"
+              placeholder="Tooth Surface"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseSelect
+              v-model="state.diagnosis"
+              label="Diagnosis*"
+              :options="diagnosiss"
+              placeholder="Diagnosis"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseSelect
+              v-model="state.severity"
+              label="Severity*"
+              :options="severities"
+              placeholder="Severity"
+            />
+          </div>
+          <div class="mb-2">
+            <ReusablesBaseSelect
+              v-model="state.treating_doctor"
+              label="Treating Doctor*"
+              :options="treating_doctors"
+              placeholder="Treating Doctor"
+            />
+          </div>
+          <div class="flex justify-center items-center gap-2 mt-5">
+            <ReusablesBaseButton
+              @click="state.isVisible2 = false"
+              label="Save"
+              className="flex justify-center items-center min-w-[90px] h-[32px] rounded bg-[#0052CC] px-3 py-1 text-xs font-medium leading-5 text-white shadow-sm"
+            />
+          </div>
+        </div>
+      </div>
+    </ReusablesModal>
   </div>
 </template>
 
@@ -624,6 +841,18 @@ definePageMeta({ layout: "owner" });
 
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
+
+const types = ["OPG", "Bitewing", "IOPA", "CBCT"];
+const ages = ["Adult", "Paedo"];
+
+const types1 = ["Blood Test"];
+const locations = ["In-house", "External"];
+
+const tooth_numbers = ["01", "02"];
+const tooth_surfaces = ["M", "O", "D", "B", "F", "L"];
+const diagnosiss = ["Cavity", "Broken Tooth"];
+const severities = ["01", "02"];
+const treating_doctors = ["01", "02"];
 
 const changeTab = (val: string) => {
   state.tab = val;
@@ -802,12 +1031,68 @@ const handleDeleteAll = () => {
 const handleView = (index: any) => {
   console.log("index : ", index);
 };
+const closeModal = () => {
+  state.isVisible = !state.isVisible;
+};
+const closeModal1 = () => {
+  state.isVisible1 = !state.isVisible1;
+};
+const closeModal2 = () => {
+  state.isVisible2 = !state.isVisible2;
+};
+const closePopup = () => {
+  state.isPopup = !state.isPopup;
+};
 
 // Form inputs
 const state = reactive<{
   tab: string;
+  type_name: string;
+  age: string;
+  tooth_number: string;
+  file: string;
+
+  type_name1: string;
+  location: string;
+  price: string;
+  date: string;
+  observations: string;
+  file1: string;
+
+  tooth_number1: string;
+  tooth_surface: string;
+  diagnosis: string;
+  severity: string;
+  treating_doctor: string;
+
+  isVisible: boolean;
+  isVisible1: boolean;
+  isVisible2: boolean;
+  isPopup: boolean;
 }>({
   tab: "patient-history",
+  type_name: "OPG",
+  age: "Adult",
+  tooth_number: "",
+  file: "",
+
+  type_name1: "",
+  location: "",
+  price: "",
+  date: "",
+  observations: "",
+  file1: "",
+
+  tooth_number1: "string",
+  tooth_surface: "string",
+  diagnosis: "string",
+  severity: "string",
+  treating_doctor: "string",
+
+  isVisible: false,
+  isVisible1: false,
+  isVisible2: false,
+  isPopup: true,
 });
 </script>
 
