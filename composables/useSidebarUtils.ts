@@ -80,7 +80,13 @@ export default () => {
               route: '/dashboard/account/ledger'
             }
           ]
-        }
+        },
+        {
+          name: 'Leave',
+          icon: 'calendar',
+          show: false,
+          route: '/dashboard/leave'
+        },
       ]
     }
   ]);

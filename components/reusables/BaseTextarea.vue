@@ -4,11 +4,10 @@
     <label v-if="label" class="label-style" :for="label">{{ label }}</label>
     <textarea
       :id="label"
+      :placeholder="placeholder"
       name="textarea"
       class="input-style textarea-style"
       :class="{ err: error }"
-      cols="30"
-      rows="10"
       v-bind="$attrs"
       @input="
         $emit('update:modelValue', ($event.target as HTMLInputElement).value)
