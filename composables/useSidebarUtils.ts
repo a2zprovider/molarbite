@@ -40,12 +40,12 @@ export default () => {
       title: 'Components',
       icon: 'mdi-puzzle',
       list: [
-        //     {
-        //       name: 'Appointments',
-        //       icon: 'calendar',
-        //       show: false,
-        //       route: '/dashboard'
-        //     },
+        {
+          name: 'Appointments',
+          icon: 'calendar',
+          show: false,
+          route: '/dashboard/appointment'
+        },
         {
           name: 'Patient Management',
           icon: 'user',

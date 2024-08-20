@@ -159,7 +159,7 @@
             icon-left="plus"
             :left-size="16"
             class="flex justify-center items-center w-full h-[44px] p-3 rounded bg-[#0052CC] font-inter text-base font-normal leading-5 text-white shadow-sm hover:bg-[#0052CC] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0052CC]"
-            @click="$router.push('/')"
+            @click="$router.push('/dashboard/appointment/create')"
           />
         </div>
         <!-- Card -->
