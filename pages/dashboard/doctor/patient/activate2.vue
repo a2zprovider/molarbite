@@ -247,16 +247,28 @@
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
             >List of Current Medication*</label
           >
-          <div class="grid grid-cols-3 gap-3 mt-2 items-center">
+          <div v-for="n in state.input_count" :key="n" class="mt-2 max-w-80">
+            <div>
+              <input
+                type="text"
+                name="medication"
+                placeholder="medication"
+                class="input-style"
+              />
+            </div>
+          </div>
+          <div class="flex gap-3 mt-2 items-center">
             <div class="">
               <ReusablesBaseInput
                 v-model="state.medication"
                 type="taxt"
                 placeholder="medication"
+                class="min-w-80"
               />
             </div>
             <div class="">
               <ReusablesBaseButton
+                @click="addMore()"
                 label="Add More"
                 iconClass="text-[#0052CC]"
                 icon-left="plus"
@@ -459,15 +471,21 @@ definePageMeta({ layout: "owner" });
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
+const addMore = () => {
+  state.input_count++;
+};
+
 // Form inputs
 const state = reactive<{
   health: string;
   medication: string;
   pregnant: string;
+  input_count: number;
 }>({
   health: "",
   medication: "",
   pregnant: "",
+  input_count: 0,
 });
 </script>
 <style scoped>

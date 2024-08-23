@@ -104,6 +104,7 @@
         </div>
         <div class="flex justify-center">
           <ReusablesBaseButton
+            @click="$router.push('/dashboard/account/invoice/view')"
             label="Create"
             className="flex justify-center items-center rounded w-[120px] h-[40px]  bg-[#0052CC] p-2.5 text-sm font-bold leading-4 text-white"
           />

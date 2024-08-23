@@ -106,16 +106,14 @@
     @apply bg-transparent;
   }
 
-  .v-style .vs__selected-options {
-    @apply px-0.5 py-1;
-  }
+  .v-style .vs__selected-options {}
 
   .v-style .vs__search {
-    @apply w-auto border-none rounded-[4px] p-1 transition-all duration-200 ease-in-out disabled:rounded-[4px] disabled:border disabled:border-gray-300 disabled:bg-gray-50 disabled:cursor-default;
+    @apply block w-full h-[32px] py-0 m-0 text-xs rounded text-[#8F95B2] placeholder:text-[#8F95B2] outline-0 focus:outline-0 !important;
   }
 
   .v-style .vs__dropdown-toggle {
-    @apply border border-gray-300 rounded-[4px] h-[42px] flex items-center px-4;
+    @apply p-0 border border-gray-300 rounded-[4px] flex items-center;
   }
 
   .v-style .vs__clear,
@@ -124,7 +122,7 @@
   }
 
   .v-style .vs__search::placeholder {
-    @apply text-gray-500;
+    @apply text-[#8F95B2] text-xs;
   }
 
   .v-style .vs__selected,
@@ -133,16 +131,25 @@
   }
 
   .v-style .vs__selected {
-    @apply dark:text-primary;
+    @apply text-xs text-[#8F95B2] absolute flex items-center h-[32px] m-0 py-0 pl-2;
   }
 
   .v-style .vs__dropdown-menu {
-    @apply bg-white dark:bg-darkBg;
+    @apply bg-white;
   }
 
   .v-style .vs__search:focus {
     @apply w-auto;
   }
+
+  .v-style .vs__dropdown-menu li {
+    @apply px-2 font-inter h-[40px] text-[#474D66] text-sm font-normal border-l border-l-[transparent] flex items-center hover:border-l hover:border-l-[#3366FF] hover:text-[#3366FF] hover:bg-[#EBF0FF] focus:border-l focus:border-l-[#3366FF] focus:text-[#3366FF] focus:bg-[#EBF0FF];
+  }
+
+  .v-style .vs__dropdown-option--highlight {
+    @apply bg-[#EBF0FF] text-[#3366FF] border-l border-l-[#3366FF] !important;
+  }
+
 
   /* FORM ERRORS */
   .error {

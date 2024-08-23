@@ -3,17 +3,28 @@
     <div class="mb-3 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <ReusablesBaseButton
-          @click="$router.push('/')"
+          @click="state.tab = 'registered'"
           label="Registered"
           iconClass="text-[#696F8C]"
           class="flex justify-center items-center w-[94px] h-[32px] rounded p-3 bg-white font-inter text-xs font-medium leading-4 text-[#696F8C] border-[1px] border-[#D8DAE5]"
+          :class="state.tab == 'registered' ? 'tab-active' : 'tab-inactive'"
         />
         <ReusablesBaseButton
-          @click="$router.push('/')"
+          @click="state.tab = 'activated'"
           label="Activated"
           iconClass="text-[#696F8C]"
           class="flex justify-center items-center w-[94px] h-[32px] rounded p-3 bg-white font-inter text-xs font-medium leading-4 text-[#696F8C] border-[1px] border-[#D8DAE5]"
+          :class="state.tab == 'activated' ? 'tab-active' : 'tab-inactive'"
         />
+        <div>
+          <input
+            type="search"
+            name=""
+            id=""
+            class="input-style appearance-none"
+            placeholder="Search Patient"
+          />
+        </div>
       </div>
       <ReusablesBaseButton
         @click="state.isVisible1 = true"
@@ -25,19 +36,70 @@
       />
     </div>
 
-    <ReusablesBaseTable
-      :srNo="true"
-      :headers="headers"
-      :data="items"
-      :row-selector="false"
-      :edit_btn="true"
-      :onEdit="handleEdit"
-      :delete_btn="true"
-      :onDelete="handleDelete"
-      :view_btn="true"
-      :onView="handleView"
-    >
-    </ReusablesBaseTable>
+    <div v-if="state.tab == 'registered'">
+      <ReusablesBaseTable
+        :srNo="true"
+        :headers="headers"
+        :data="items"
+        :row-selector="false"
+        :edit_btn="true"
+        :onEdit="handleEdit"
+        :delete_btn="false"
+        :onDelete="handleDelete"
+        :view_btn="true"
+        :onView="handleView"
+      >
+        <template #mobile_number="item">
+          <p class="text-[#0065FF]">{{ item.mobile_number }} 11</p>
+        </template>
+      </ReusablesBaseTable>
+    </div>
+    <div v-else>
+      <ReusablesBaseTable
+        :srNo="true"
+        :headers="headers1"
+        :data="items1"
+        :row-selector="false"
+        :edit_btn="true"
+        :onEdit="handleEdit"
+        :delete_btn="true"
+        :onDelete="handleDelete"
+        :view_btn="true"
+        :onView="handleView"
+      >
+        <template #mobile_number="item">
+          <p class="text-[#0065FF]">{{ item.mobile_number }}</p>
+        </template>
+        <template #marketing="item">
+          <Icon
+            name="mdi:toggle-switch"
+            size="40"
+            class="text-[#3366FF]"
+            v-if="item.marketing == true"
+          />
+          <Icon
+            name="mdi:toggle-switch-off"
+            size="40"
+            class="text-[#D8DAE5]"
+            v-if="item.marketing == false"
+          />
+        </template>
+        <template #transaction="item">
+          <Icon
+            name="mdi:toggle-switch"
+            size="40"
+            class="text-[#3366FF]"
+            v-if="item.transaction == true"
+          />
+          <Icon
+            name="mdi:toggle-switch-off"
+            size="40"
+            class="text-[#D8DAE5]"
+            v-if="item.transaction == false"
+          />
+        </template>
+      </ReusablesBaseTable>
+    </div>
 
     <ReusablesModal
       className="w-[424px]"
@@ -185,6 +247,24 @@ import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
 const headers = {
+  patient_name: "Patient Name",
+  mobile_number: "Mobile Number",
+  gender: "Gender",
+};
+const items = [
+  {
+    patient_name: "Ram Murthy Swani Narayan raja Pallai",
+    mobile_number: "+91 78999 31444",
+    gender: "Male",
+  },
+  {
+    patient_name: "Ram Murthy Swani Narayan raja Pallai",
+    mobile_number: "+91 78999 31444",
+    gender: "Male",
+  },
+];
+
+const headers1 = {
   patient_id: "Patient ID",
   patient_name: "Patient Name",
   mobile_number: "Mobile Number",
@@ -192,13 +272,13 @@ const headers = {
   marketing: "Marketing",
   transaction: "Transaction",
 };
-const items = [
+const items1 = [
   {
     patient_id: "#1111",
     patient_name: "Ram Murthy Swani Narayan raja Pallai",
     mobile_number: "+91 78999 31444",
     gender: "Male",
-    marketing: false,
+    marketing: true,
     transaction: false,
   },
   {
@@ -248,6 +328,8 @@ const state = reactive<{
 
   isVisible: boolean;
   isVisible1: boolean;
+
+  tab: string;
 }>({
   full_name: "",
   email: "",
@@ -257,7 +339,16 @@ const state = reactive<{
 
   isVisible: false,
   isVisible1: false,
+
+  tab: "registered",
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.tab-active {
+  @apply bg-[#F3F6FF] text-[#3366FF];
+}
+.tab-inactive {
+  @apply bg-white text-[#696F8C];
+}
+</style>

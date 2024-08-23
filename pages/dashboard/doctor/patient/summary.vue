@@ -9,6 +9,14 @@
         :left-size="16"
         class="flex justify-center items-center font-inter text-sm font-medium leading-6 text-[#1F3D99]"
       />
+      <div>
+        <ReusablesBaseButton
+          v-if="state.tab == 'prescribe'"
+          @click="$router.push('/dashboard/doctor/patient/prescription1')"
+          label="Add"
+          className="flex justify-center items-center w-[120px] h-[40px] rounded bg-[#0052CC] px-3 py-1 text-xs font-medium leading-5 text-white shadow-sm"
+        />
+      </div>
     </div>
 
     <div class="mb-5 flex items-center text-center">
@@ -552,6 +560,11 @@
           :view_btn="false"
           :onView="handleView"
         >
+          <template #file="item">
+            <p class="text-[#3366FF] font-inter font-semibold text-sm">
+              {{ item.file }}
+            </p>
+          </template>
         </ReusablesBaseTable>
         <div class="flex items-center justify-center mt-10">
           <ReusablesBaseButton
@@ -576,6 +589,13 @@
           :view_btn="false"
           :onView="handleView"
         >
+          <template #severity="item">
+            <span
+              class="bg-[#D6E0FF] text-[#2952CC] w-[20px] h-[20px] p-2 py-1 rounded-full"
+            >
+              {{ item.severity }}
+            </span>
+          </template>
         </ReusablesBaseTable>
         <div class="flex items-center justify-center mt-10">
           <ReusablesBaseButton
@@ -593,13 +613,41 @@
           :headers="treatment_headers"
           :data="treatment_items"
           :row-selector="false"
-          :edit_btn="true"
+          :edit_btn="false"
           :onEdit="handleEdit"
-          :delete_btn="true"
+          :delete_btn="false"
           :onDelete="handleDelete"
           :view_btn="false"
           :onView="handleView"
         >
+          <template #diagnosis="item">
+            <p>{{ item.diagnosis }}</p>
+            <ul class="list-disc ml-4 mt-2">
+              <li>
+                <div class="flex gap-4">
+                  <p>Treatment 1</p>
+                  <p>30 Minutes</p>
+                </div>
+              </li>
+            </ul>
+          </template>
+          <template #severity="item">
+            <span
+              class="bg-[#D6E0FF] text-[#2952CC] w-[20px] h-[20px] p-2 py-1 rounded-full"
+            >
+              {{ item.severity }}
+            </span>
+          </template>
+          <template #others="item">
+            <div class="">
+              <div class="pb-2"></div>
+              <p class="text-[#163BAC]">{{ item.others }}</p>
+              <div class="flex items-center gap-4 mt-2">
+                <p>Sub Total</p>
+                <strong class="text-black">{{ item.others }}</strong>
+              </div>
+            </div>
+          </template>
         </ReusablesBaseTable>
         <div class="flex items-center justify-center mt-10">
           <ReusablesBaseButton
