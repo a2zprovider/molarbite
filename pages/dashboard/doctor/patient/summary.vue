@@ -544,6 +544,20 @@
             </div>
           </div>
         </div>
+        <div class="bg-[#E3E3E3] p-5">
+          <div class="flex items-center gap-3">
+              <ReusablesBaseInput
+                v-model="state.notes"
+                type="taxt"
+                placeholder="Notes"
+                class="w-full"
+              />
+            <ReusablesBaseButton
+              label="Save"
+              className="flex justify-center items-center rounded w-[120px] bg-[#0052CC] p-2.5 text-sm font-normal leading-4 text-white"
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div v-if="state.tab == 'diagnostic-test'">
@@ -621,15 +635,31 @@
           :onView="handleView"
         >
           <template #diagnosis="item">
-            <p>{{ item.diagnosis }}</p>
-            <ul class="list-disc ml-4 mt-2">
+            <p class="mb-2">{{ item.diagnosis }}</p>
+            <ul class="list-disc ml-4 mb-2" v-if="state.treatment_edit==false">
               <li>
-                <div class="flex gap-4">
+                <div class="flex items-center gap-4">
                   <p>Treatment 1</p>
                   <p>30 Minutes</p>
                 </div>
               </li>
             </ul>
+            <div class="flex items-center gap-4 mb-2" v-if="state.treatment_edit==true">
+              <ReusablesBaseSelect
+                v-model="state.treatment"
+                :options="treatments"
+                placeholder="Select Treatment"
+              />
+              <p>30 Minutes</p>
+            </div>
+            <div class="mb-2" v-if="state.treatment_edit==true">
+              <ReusablesBaseButton
+                iconClass="text-white"
+                icon-left="plus-circle-outline"
+                :left-size="16"
+                className="flex justify-center items-center rounded bg-[#0052CC] p-2 text-sm font-normal leading-4 text-white"
+              />
+            </div>
           </template>
           <template #severity="item">
             <span
@@ -648,14 +678,78 @@
               </div>
             </div>
           </template>
+          <template #action="item">
+            <div class="flex items-center gap-3">
+              <ReusablesBaseButton  
+                v-if="state.treatment_edit==false"
+                @click="state.treatment_edit=true"
+                iconClass="text-[#8F95B2]"
+                icon-left="lead-pencil"
+                :left-size="16"
+                className="flex justify-center items-center rounded border border-[#D8DAE5] bg-white p-2 text-sm font-normal leading-4 text-[#0052CC]"
+              />
+              <ReusablesBaseButton  
+                iconClass="text-[#D14343]"
+                icon-left="delete"
+                :left-size="16"
+                className="flex justify-center items-center rounded border border-[#D14343] bg-white p-2 text-sm font-normal leading-4 text-[#0052CC]"
+              />
+            </div>
+          </template>
         </ReusablesBaseTable>
         <div class="flex items-center justify-center mt-10">
           <ReusablesBaseButton
+            v-if="state.treatment_edit==true"
+            @click="state.treatment_edit=false"
             label="Save"
             className="flex justify-center items-center rounded w-[120px] bg-[#0052CC] p-2.5 text-sm font-normal leading-4 text-white"
           />
         </div>
       </div>
+    </div>
+    <div v-if="state.tab == 'treatment-plan-proposal'">
+      <div class="bg-white p-5">
+        <div class="flex items-center text-center">
+          <div
+            class="px-4 py-2 min-w-[130px] font-medium tab-active text-sm lending-4 border border-r-[0] border-[#D8DAE5] cursor-pointer rounded-l"
+          >
+            Current
+          </div>
+          <div
+            class="px-4 py-2 min-w-[130px] font-medium text-sm tab-inactive lending-4 border border-[#D8DAE5] cursor-pointer rounded-r"
+          >
+            Historic
+          </div>
+        </div>
+      </div>
+      <ReusablesBaseTable
+          :srNo="false"
+          :headers="treatment_proposal_headers"
+          :data="treatment_proposal_items"
+          :row-selector="false"
+          :edit_btn="false"
+          :onEdit="handleEdit"
+          :delete_btn="false"
+          :onDelete="handleDelete"
+          :view_btn="false"
+          :onView="handleView"
+        >
+          <template #severity="item">
+            <span
+              class="bg-[#D6E0FF] text-[#2952CC] w-[20px] h-[20px] p-2 py-1 rounded-full"
+            >
+              {{ item.severity }}
+            </span>
+          </template>
+          <template #cost="item">
+            <span
+              class="text-[#163BAC]"
+            >
+              {{ item.cost }}
+            </span>
+          </template>
+          
+        </ReusablesBaseTable>
     </div>
     <div v-if="state.tab == 'prescribe'">
       <div>
@@ -901,6 +995,7 @@ const tooth_surfaces = ["M", "O", "D", "B", "F", "L"];
 const diagnosiss = ["Cavity", "Broken Tooth"];
 const severities = ["01", "02"];
 const treating_doctors = ["01", "02"];
+const treatments = ["Treatment 1", "Treatment 2"];
 
 const changeTab = (val: string) => {
   state.tab = val;
@@ -981,6 +1076,7 @@ const treatment_headers = {
   diagnosis: "Diagnosis",
   severity: "Severity",
   others: "Others",
+  action: "Action",
 };
 const treatment_items = [
   {
@@ -989,6 +1085,7 @@ const treatment_items = [
     diagnosis: "Cavity",
     severity: "1",
     others: "₹ 10,000.00",
+    action: "",
   },
   {
     tooth_number: "13",
@@ -996,6 +1093,7 @@ const treatment_items = [
     diagnosis: "Broken Tooth",
     severity: "2",
     others: "₹ 10,000.00",
+    action: "",
   },
   {
     tooth_number: "22",
@@ -1003,6 +1101,46 @@ const treatment_items = [
     diagnosis: "Broken Tooth",
     severity: "3",
     others: "₹ 10,000.00",
+    action: "",
+  },
+];
+
+const treatment_proposal_headers = {
+  tooth_number: "Tooth Number",
+  tooth_surface: "Tooth Surface",
+  diagnosis: "Diagnosis",
+  treatment: "Treatment",
+  time: "Time",
+  severity: "Severity",
+  cost: "Cost",
+};
+const treatment_proposal_items = [
+  {
+    tooth_number: "13",
+    tooth_surface: "O, D, B, F, L",
+    diagnosis: "Cavity",
+    treatment: "UV Paste",
+    time: "10 Minutes",
+    severity: "1",
+    cost: "₹ 10,000.00",
+  },
+  {
+    tooth_number: "13",
+    tooth_surface: "O, B",
+    diagnosis: "Broken Tooth",
+    treatment: "Artificial Tooth",
+    time: "10 Minutes",
+    severity: "2",
+    cost: "₹ 10,000.00",
+  },
+  {
+    tooth_number: "22",
+    tooth_surface: "F, L",
+    diagnosis: "Broken Tooth",
+    treatment: "Root Canal",
+    time: "10 Minutes",
+    severity: "3",
+    cost: "₹ 10,000.00",
   },
 ];
 
@@ -1113,6 +1251,10 @@ const state = reactive<{
   severity: string;
   treating_doctor: string;
 
+  notes: string;
+  treatment_edit:boolean;
+  treatment:string;
+
   isVisible: boolean;
   isVisible1: boolean;
   isVisible2: boolean;
@@ -1131,11 +1273,15 @@ const state = reactive<{
   observations: "",
   file1: "",
 
-  tooth_number1: "string",
-  tooth_surface: "string",
-  diagnosis: "string",
-  severity: "string",
-  treating_doctor: "string",
+  tooth_number1: "",
+  tooth_surface: "",
+  diagnosis: "",
+  severity: "",
+  treating_doctor: "",
+
+  notes: "",
+  treatment_edit:true,
+  treatment:'',
 
   isVisible: false,
   isVisible1: false,

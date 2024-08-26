@@ -138,8 +138,29 @@
     </div>
 
     <div class="mb-5">
-      <div class="bg-white px-6 py-3">
-        <p class="font-bold text-black text-2xl">Ledger</p>
+      <div class="flex items-center justify-between bg-white py-3 px-5">
+        <div class="flex items-center gap-4">
+          <p class="text-black font-bold text-2xl">Ledger</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <p class="text-[#474D66] font-inter text-medium text-sm">Filter By</p>
+          <ReusablesBaseInput
+            v-model="state.from_date"
+            type="text"
+            placeholder="From date"
+          />
+          <p>-</p>
+          <ReusablesBaseInput
+            v-model="state.to_date"
+            type="text"
+            placeholder="To date"
+          />
+          <ReusablesBaseSelect
+            v-model="state.branch"
+            :options="branches"
+            placeholder="Select Branch"
+          />
+        </div>
       </div>
       <ReusablesBaseTable
         :srNo="false"
@@ -169,8 +190,29 @@
       </ReusablesBaseTable>
     </div>
     <div class="mb-5">
-      <div class="bg-white px-6 py-3">
-        <p class="font-bold text-black text-2xl">Invoice Created</p>
+      <div class="flex items-center justify-between bg-white py-3 px-5">
+        <div class="flex items-center gap-4">
+          <p class="text-black font-bold text-2xl">Invoice Created</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <p class="text-[#474D66] font-inter text-medium text-sm">Filter By</p>
+          <ReusablesBaseInput
+            v-model="state.from_date"
+            type="text"
+            placeholder="From date"
+          />
+          <p>-</p>
+          <ReusablesBaseInput
+            v-model="state.to_date"
+            type="text"
+            placeholder="To date"
+          />
+          <ReusablesBaseSelect
+            v-model="state.branch"
+            :options="branches"
+            placeholder="Select Branch"
+          />
+        </div>
       </div>
       <ReusablesBaseTable
         :srNo="false"
@@ -229,6 +271,7 @@ import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
 const patients = ["Choose Patient"];
+const branches = ['Kormangala'];
 
 const headers = {
   txn_number: "Txn Number",
@@ -324,8 +367,14 @@ const items1 = [
 // Form inputs
 const state = reactive<{
   patient: string;
+  branch: string;
+  from_date: string;
+  to_date: string;
 }>({
   patient: "",
+  branch:"",
+  from_date:"",
+  to_date:"",
 });
 </script>
 

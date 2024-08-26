@@ -350,8 +350,8 @@ definePageMeta({ layout: "owner" });
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
-const languages = ["Language"];
-const occupations = ["Occupation"];
+const languages = ["English",'Hindi','kannada','Telugu','Tamil','Malayalam','Others'];
+const occupations = ["Self-Employed",'Salaried','Home Maker','Others'];
 
 // Form inputs
 const state = reactive<{

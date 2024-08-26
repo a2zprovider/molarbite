@@ -50,7 +50,7 @@
         :onView="handleView"
       >
         <template #mobile_number="item">
-          <p class="text-[#0065FF]">{{ item.mobile_number }} 11</p>
+          <p class="text-[#0065FF]">{{ item.mobile_number }}</p>
         </template>
       </ReusablesBaseTable>
     </div>

@@ -397,7 +397,7 @@ definePageMeta({ layout: "owner" });
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
-const relationships = ["Relationship"];
+const relationships = ["Mother",'Father','Husband','Wife'];
 
 // Form inputs
 const state = reactive<{

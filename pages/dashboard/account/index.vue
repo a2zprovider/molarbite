@@ -37,6 +37,44 @@
       />
     </div>
     <div v-if="state.tab == 'payment'">
+      <div class="flex items-center justify-between bg-white py-3 px-5">
+        <div class="flex items-center gap-4">
+          <p class="text-black font-bold text-2xl">Payments</p>
+          <ReusablesBaseButton
+            label="Payment"
+            iconClass="text-[#474D66]"
+            icon-left="plus"
+            :left-size="12"
+            className="flex justify-center items-center border border-[#8F95B2] rounded bg-white px-4 py-2 font-inter text-xs font-normal leading-4 text-[#474D66]"
+          />
+        </div>
+        <div class="flex items-center gap-4">
+          <ReusablesBaseSelect
+            v-model="state.patient"
+            :options="patients"
+            placeholder="Select Patient"
+          />
+          <ReusablesBaseSelect
+            v-model="state.branch"
+            :options="branches"
+            placeholder="Select Branch"
+          />
+        </div>
+        <div class="flex items-center gap-4">
+          <p class="text-[#474D66] font-inter text-medium text-sm">Filter By</p>
+          <ReusablesBaseInput
+            v-model="state.from_date"
+            type="text"
+            placeholder="From date"
+          />
+          <p>-</p>
+          <ReusablesBaseInput
+            v-model="state.to_date"
+            type="text"
+            placeholder="To date"
+          />
+        </div>
+      </div>
       <ReusablesBaseTable
         :srNo="false"
         :headers="headers"
@@ -69,6 +107,37 @@
       v-if="state.tab == 'invoice'"
       :class="state.tab == 'invoice' ? 'tab-active' : 'tab-inactive'"
     >
+      <div class="flex items-center justify-between bg-white py-3 px-5">
+        <div class="flex items-center gap-4">
+          <p class="text-black font-bold text-2xl">Invoices</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <ReusablesBaseSelect
+            v-model="state.patient"
+            :options="patients"
+            placeholder="Select Patient"
+          />
+          <ReusablesBaseSelect
+            v-model="state.branch"
+            :options="branches"
+            placeholder="Select Branch"
+          />
+        </div>
+        <div class="flex items-center gap-4">
+          <p class="text-[#474D66] font-inter text-medium text-sm">Filter By</p>
+          <ReusablesBaseInput
+            v-model="state.from_date"
+            type="text"
+            placeholder="From date"
+          />
+          <p>-</p>
+          <ReusablesBaseInput
+            v-model="state.to_date"
+            type="text"
+            placeholder="To date"
+          />
+        </div>
+      </div>
       <ReusablesBaseTable
         :srNo="false"
         :headers="headers1"
@@ -125,6 +194,9 @@ const { truncateText } = useTruncate();
 
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
+
+const patients = ['Mr. Patient One'];
+const branches = ['Kormangala'];
 
 const headers = {
   patient_id: "Patient ID",
@@ -264,6 +336,11 @@ const state = reactive<{
   date_of_birth: string;
   age: string;
 
+  patient: string;
+  branch: string;
+  from_date: string;
+  to_date: string;
+
   tab: string;
 }>({
   full_name: "",
@@ -271,6 +348,11 @@ const state = reactive<{
   mobile: "",
   date_of_birth: "",
   age: "",
+
+  patient: "",
+  branch:"",
+  from_date:"",
+  to_date:"",
 
   tab: "payment",
 });
