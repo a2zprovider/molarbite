@@ -35,12 +35,9 @@
                 +91 78999 31422
               </p>
             </div>
-            <Icon
-              name="mdi:chevron-right"
-              size="16"
-              class="text-[#8F95B2]"
-            /> </RouterLink
-          ><RouterLink
+            <Icon name="mdi:chevron-right" size="16" class="text-[#8F95B2]" />
+          </RouterLink>
+          <RouterLink
             to="/dashboard/account/patient/profile"
             class="flex items-center justify-between p-2 cursor-pointer"
           >

@@ -546,12 +546,12 @@
         </div>
         <div class="bg-[#E3E3E3] p-5">
           <div class="flex items-center gap-3">
-              <ReusablesBaseInput
-                v-model="state.notes"
-                type="taxt"
-                placeholder="Notes"
-                class="w-full"
-              />
+            <ReusablesBaseInput
+              v-model="state.notes"
+              type="taxt"
+              placeholder="Notes"
+              class="w-full"
+            />
             <ReusablesBaseButton
               label="Save"
               className="flex justify-center items-center rounded w-[120px] bg-[#0052CC] p-2.5 text-sm font-normal leading-4 text-white"
@@ -636,7 +636,10 @@
         >
           <template #diagnosis="item">
             <p class="mb-2">{{ item.diagnosis }}</p>
-            <ul class="list-disc ml-4 mb-2" v-if="state.treatment_edit==false">
+            <ul
+              class="list-disc ml-4 mb-2"
+              v-if="state.treatment_edit == false"
+            >
               <li>
                 <div class="flex items-center gap-4">
                   <p>Treatment 1</p>
@@ -644,7 +647,10 @@
                 </div>
               </li>
             </ul>
-            <div class="flex items-center gap-4 mb-2" v-if="state.treatment_edit==true">
+            <div
+              class="flex items-center gap-4 mb-2"
+              v-if="state.treatment_edit == true"
+            >
               <ReusablesBaseSelect
                 v-model="state.treatment"
                 :options="treatments"
@@ -652,7 +658,7 @@
               />
               <p>30 Minutes</p>
             </div>
-            <div class="mb-2" v-if="state.treatment_edit==true">
+            <div class="mb-2" v-if="state.treatment_edit == true">
               <ReusablesBaseButton
                 iconClass="text-white"
                 icon-left="plus-circle-outline"
@@ -680,15 +686,15 @@
           </template>
           <template #action="item">
             <div class="flex items-center gap-3">
-              <ReusablesBaseButton  
-                v-if="state.treatment_edit==false"
-                @click="state.treatment_edit=true"
+              <ReusablesBaseButton
+                v-if="state.treatment_edit == false"
+                @click="state.treatment_edit = true"
                 iconClass="text-[#8F95B2]"
                 icon-left="lead-pencil"
                 :left-size="16"
                 className="flex justify-center items-center rounded border border-[#D8DAE5] bg-white p-2 text-sm font-normal leading-4 text-[#0052CC]"
               />
-              <ReusablesBaseButton  
+              <ReusablesBaseButton
                 iconClass="text-[#D14343]"
                 icon-left="delete"
                 :left-size="16"
@@ -699,8 +705,8 @@
         </ReusablesBaseTable>
         <div class="flex items-center justify-center mt-10">
           <ReusablesBaseButton
-            v-if="state.treatment_edit==true"
-            @click="state.treatment_edit=false"
+            v-if="state.treatment_edit == true"
+            @click="state.treatment_edit = false"
             label="Save"
             className="flex justify-center items-center rounded w-[120px] bg-[#0052CC] p-2.5 text-sm font-normal leading-4 text-white"
           />
@@ -708,48 +714,164 @@
       </div>
     </div>
     <div v-if="state.tab == 'treatment-plan-proposal'">
-      <div class="bg-white p-5">
-        <div class="flex items-center text-center">
-          <div
-            class="px-4 py-2 min-w-[130px] font-medium tab-active text-sm lending-4 border border-r-[0] border-[#D8DAE5] cursor-pointer rounded-l"
-          >
-            Current
+      
+      <div>
+        <div class="mb-6">
+          <div class="bg-white p-5">
+            <div class="flex items-center text-center">
+              <div
+                class="px-4 py-2 min-w-[130px] font-medium tab-active text-sm lending-4 border border-r-[0] border-[#D8DAE5] cursor-pointer rounded-l"
+              >
+                Current
+              </div>
+              <div
+                class="px-4 py-2 min-w-[130px] font-medium text-sm tab-inactive lending-4 border border-[#D8DAE5] cursor-pointer rounded-r"
+              >
+                Historic
+              </div>
+            </div>
           </div>
-          <div
-            class="px-4 py-2 min-w-[130px] font-medium text-sm tab-inactive lending-4 border border-[#D8DAE5] cursor-pointer rounded-r"
-          >
-            Historic
+          <table class="w-full bg-white">
+            <thead class="bg-[#E5ECF5]">
+              <tr>
+                <th
+                  v-for="(header, i) in treatment_proposal_headers"
+                  :key="i"
+                  class="h-[48px] text-[#637381] text-base font-medium px-6 py-2.5 whitespace-nowrap text-left"
+                >
+                  {{ header }}
+                </th>
+              </tr>
+            </thead>
+            <draggable
+              :list="treatment_proposal_items"
+              class=""
+              group="people"
+              @change="log"
+              itemKey="name"
+              tag="tbody"
+            >
+              <template #item="{ element, index }">
+                <tr :key="index">
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    {{ element.tooth_number }}.
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    {{ element.tooth_surface }}
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    {{ element.diagnosis }}
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    {{ element.treatment }}
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    {{ element.time }}
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    <span
+                      class="bg-[#D6E0FF] text-[#2952CC] w-[20px] h-[20px] p-2 py-1 rounded-full"
+                    >
+                      {{ element.severity }}
+                    </span>
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    <span class="text-[#163BAC]">
+                      {{ element.cost }}
+                    </span>
+                  </td>
+                </tr>
+              </template>
+            </draggable>
+          </table>
+        </div>
+        <div class="mb-6">
+          <div class="bg-white p-5">
+            <p>04052023 - 1</p>
           </div>
+          <table class="w-full bg-white">
+            <thead class="bg-[#E5ECF5]">
+              <tr>
+                <th
+                  v-for="(header, i) in treatment_proposal_headers1"
+                  :key="i"
+                  class="h-[48px] text-[#637381] text-base font-medium px-6 py-2.5 whitespace-nowrap text-left"
+                >
+                  {{ header }}
+                </th>
+              </tr>
+            </thead>
+            <draggable
+              :list="treatment_proposal_items1"
+              class=""
+              group="people"
+              @change="log"
+              itemKey="name"
+              tag="tbody"
+            >
+              <template #item="{ element, index }">
+                <tr :key="index">
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    {{ element.tooth_number }}.
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    {{ element.tooth_surface }}
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    {{ element.diagnosis }}
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    {{ element.treatment }}
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    {{ element.time }}
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    <span
+                      class="bg-[#D6E0FF] text-[#2952CC] w-[20px] h-[20px] p-2 py-1 rounded-full"
+                    >
+                      {{ element.severity }}
+                    </span>
+                  </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    <span class="text-[#163BAC]">
+                      {{ element.cost }}
+                    </span>
+                  </td>
+                </tr>
+              </template>
+            </draggable>
+          </table>
         </div>
       </div>
-      <ReusablesBaseTable
-          :srNo="false"
-          :headers="treatment_proposal_headers"
-          :data="treatment_proposal_items"
-          :row-selector="false"
-          :edit_btn="false"
-          :onEdit="handleEdit"
-          :delete_btn="false"
-          :onDelete="handleDelete"
-          :view_btn="false"
-          :onView="handleView"
-        >
-          <template #severity="item">
-            <span
-              class="bg-[#D6E0FF] text-[#2952CC] w-[20px] h-[20px] p-2 py-1 rounded-full"
-            >
-              {{ item.severity }}
-            </span>
-          </template>
-          <template #cost="item">
-            <span
-              class="text-[#163BAC]"
-            >
-              {{ item.cost }}
-            </span>
-          </template>
-          
-        </ReusablesBaseTable>
     </div>
     <div v-if="state.tab == 'prescribe'">
       <div>
@@ -981,8 +1103,25 @@
 <script setup lang="ts">
 definePageMeta({ layout: "owner" });
 
+import draggable from "vuedraggable";
+
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
+
+const name = "two-lists1";
+const display = "Two Lists11";
+const order = 1;
+const list1 = ref([
+  { name: "John", id: 1 },
+  { name: "Joao", id: 2 },
+  { name: "Jean", id: 3 },
+  { name: "Gerard", id: 4 },
+]);
+const list2 = ref([
+  { name: "Juan", id: 5 },
+  { name: "Edgard", id: 6 },
+  { name: "Johnson", id: 7 },
+]);
 
 const types = ["OPG", "Bitewing", "IOPA", "CBCT"];
 const ages = ["Adult", "Paedo"];
@@ -1114,7 +1253,7 @@ const treatment_proposal_headers = {
   severity: "Severity",
   cost: "Cost",
 };
-const treatment_proposal_items = [
+const treatment_proposal_items = ref([
   {
     tooth_number: "13",
     tooth_surface: "O, D, B, F, L",
@@ -1142,7 +1281,45 @@ const treatment_proposal_items = [
     severity: "3",
     cost: "₹ 10,000.00",
   },
-];
+]);
+const treatment_proposal_headers1 = {
+  tooth_number: "Tooth Number",
+  tooth_surface: "Tooth Surface",
+  diagnosis: "Diagnosis",
+  treatment: "Treatment",
+  time: "Time",
+  severity: "Severity",
+  cost: "Cost",
+};
+const treatment_proposal_items1 = ref([
+  {
+    tooth_number: "13",
+    tooth_surface: "O, D, B, F, L",
+    diagnosis: "Cavity",
+    treatment: "UV Paste",
+    time: "10 Minutes",
+    severity: "1",
+    cost: "₹ 10,000.00",
+  },
+  {
+    tooth_number: "13",
+    tooth_surface: "O, B",
+    diagnosis: "Broken Tooth",
+    treatment: "Artificial Tooth",
+    time: "10 Minutes",
+    severity: "2",
+    cost: "₹ 10,000.00",
+  },
+  {
+    tooth_number: "22",
+    tooth_surface: "F, L",
+    diagnosis: "Broken Tooth",
+    treatment: "Root Canal",
+    time: "10 Minutes",
+    severity: "3",
+    cost: "₹ 10,000.00",
+  },
+]);
 
 const prescribe_headers = {
   date: "Date",
@@ -1252,8 +1429,8 @@ const state = reactive<{
   treating_doctor: string;
 
   notes: string;
-  treatment_edit:boolean;
-  treatment:string;
+  treatment_edit: boolean;
+  treatment: string;
 
   isVisible: boolean;
   isVisible1: boolean;
@@ -1280,8 +1457,8 @@ const state = reactive<{
   treating_doctor: "",
 
   notes: "",
-  treatment_edit:true,
-  treatment:'',
+  treatment_edit: true,
+  treatment: "",
 
   isVisible: false,
   isVisible1: false,
