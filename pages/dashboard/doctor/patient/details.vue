@@ -65,11 +65,8 @@
       :data="items"
       :row-selector="false"
       :edit_btn="false"
-      :onEdit="handleEdit"
       :delete_btn="false"
-      :onDelete="handleDelete"
       :view_btn="false"
-      :onView="handleView"
     >
     </ReusablesBaseTable>
 

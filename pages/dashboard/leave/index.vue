@@ -20,11 +20,8 @@
         :data="items"
         :row-selector="false"
         :edit_btn="false"
-        :onEdit="handleEdit"
         :delete_btn="false"
-        :onDelete="handleDelete"
         :view_btn="false"
-        :onView="handleView"
       >
         <template #reson><p></p></template>
         <template #reson_type="item">

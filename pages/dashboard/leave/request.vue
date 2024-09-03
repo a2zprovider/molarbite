@@ -22,8 +22,8 @@
             </div>
           </div>
           <div
-            class="mb-2 flex justify-center gap-2 items-center"
             v-if="state.reason_type == 'Others'"
+            class="mb-2 flex justify-center gap-2 items-center"
           >
             <div class="text-right w-[30%]">
               <p class="font-inter font-medium text-[#474D66] text-[13px]">
@@ -151,8 +151,16 @@
 
 <script setup lang="ts">
 definePageMeta({ layout: "owner" });
+// import Datepicker from "vue3-datepicker";
 
 import useVuelidate from "@vuelidate/core";
+
+const selectedDates = ref([]);
+const dateFormat = "YYYY-MM-DD";
+watch(selectedDates, (newDates) => {
+  console.log("Selected dates:", newDates);
+});
+
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
 const reasons = [

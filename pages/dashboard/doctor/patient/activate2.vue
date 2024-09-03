@@ -248,13 +248,16 @@
             >List of Current Medication*</label
           >
           <div v-for="n in state.input_count" :key="n" class="mt-2 max-w-80">
-            <div>
+            <div class="flex items-center gap-3">
               <input
                 type="text"
                 name="medication"
                 placeholder="medication"
                 class="input-style"
               />
+              <div @click="removeMore()">
+                <Icon name="mdi:delete" size="20" class="text-[#D14343]" />
+              </div>
             </div>
           </div>
           <div class="flex gap-3 mt-2 items-center">
@@ -473,6 +476,9 @@ import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
 const addMore = () => {
   state.input_count++;
+};
+const removeMore = () => {
+  state.input_count--;
 };
 
 // Form inputs

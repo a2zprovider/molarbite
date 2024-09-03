@@ -24,6 +24,7 @@
     "vue": "latest",
     "vue-select": "^4.0.0-beta.6",
     "vue-tel-input": "^9.1.4",
+    "vue3-datepicker": "^0.4.0",
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {

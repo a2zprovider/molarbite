@@ -81,16 +81,13 @@
         :data="items"
         :row-selector="false"
         :edit_btn="false"
-        :onEdit="handleEdit"
         :delete_btn="false"
-        :onDelete="handleDelete"
         :view_btn="false"
-        :onView="handleView"
       >
         <template #amount="item">
           <strong class="text-black">{{ item.amount }}</strong>
         </template>
-        <template #action="item1">
+        <template #action>
           <select name="" id="" class="border rounded p-2 outline-none">
             <option value="Manage">Manage</option>
             <option value="Edit">Edit</option>
@@ -144,11 +141,8 @@
         :data="items1"
         :row-selector="false"
         :edit_btn="false"
-        :onEdit="handleEdit"
         :delete_btn="false"
-        :onDelete="handleDelete"
         :view_btn="false"
-        :onView="handleView"
       >
         <template #amount="item">
           <strong class="text-black">{{ item.amount }}</strong>

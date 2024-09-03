@@ -24,6 +24,7 @@
             <p class="text-sm font-normal text-black">Appointments</p>
             <div class="flex items-center gap-3">
               <ReusablesBaseButton
+                @click="$router.push('/dashboard/appointment/view')"
                 label="View all"
                 class="border-[1px] rounded h-[32px] w-[66px] bg-transparent text-xs font-normal leading-4 border-[#EDF3FB] text-[#0522CC]"
               />

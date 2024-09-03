@@ -168,11 +168,8 @@
         :data="items"
         :row-selector="false"
         :edit_btn="false"
-        :onEdit="handleEdit"
         :delete_btn="false"
-        :onDelete="handleDelete"
         :view_btn="false"
-        :onView="handleView"
       >
         <template #amount="item">
           <strong class="text-black">{{ item.amount }}</strong>
@@ -220,11 +217,8 @@
         :data="items1"
         :row-selector="false"
         :edit_btn="false"
-        :onEdit="handleEdit"
         :delete_btn="false"
-        :onDelete="handleDelete"
         :view_btn="false"
-        :onView="handleView"
       >
         <template #amount="item">
           <strong class="text-black">{{ item.amount }}</strong>

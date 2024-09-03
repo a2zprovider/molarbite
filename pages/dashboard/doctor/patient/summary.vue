@@ -572,7 +572,6 @@
           :delete_btn="true"
           :onDelete="handleDelete"
           :view_btn="false"
-          :onView="handleView"
         >
           <template #file="item">
             <p class="text-[#3366FF] font-inter font-semibold text-sm">
@@ -601,7 +600,6 @@
           :delete_btn="true"
           :onDelete="handleDelete"
           :view_btn="false"
-          :onView="handleView"
         >
           <template #severity="item">
             <span
@@ -628,11 +626,8 @@
           :data="treatment_items"
           :row-selector="false"
           :edit_btn="false"
-          :onEdit="handleEdit"
           :delete_btn="false"
-          :onDelete="handleDelete"
           :view_btn="false"
-          :onView="handleView"
         >
           <template #diagnosis="item">
             <p class="mb-2">{{ item.diagnosis }}</p>
@@ -684,7 +679,7 @@
               </div>
             </div>
           </template>
-          <template #action="item">
+          <template #action>
             <div class="flex items-center gap-3">
               <ReusablesBaseButton
                 v-if="state.treatment_edit == false"
@@ -714,7 +709,6 @@
       </div>
     </div>
     <div v-if="state.tab == 'treatment-plan-proposal'">
-      
       <div>
         <div class="mb-6">
           <div class="bg-white p-5">
@@ -734,6 +728,7 @@
           <table class="w-full bg-white">
             <thead class="bg-[#E5ECF5]">
               <tr>
+                <th class="w-[1px]"></th>
                 <th
                   v-for="(header, i) in treatment_proposal_headers"
                   :key="i"
@@ -746,13 +741,18 @@
             <draggable
               :list="treatment_proposal_items"
               class=""
-              group="people"
+              :group="{ name: 'people', pull: 'clone', put: false }"
               @change="log"
               itemKey="name"
               tag="tbody"
             >
               <template #item="{ element, index }">
                 <tr :key="index">
+                  <td
+                    class="h-[64px] w-[1px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    <Icon name="mdi:drag-vertical" size="23" />
+                  </td>
                   <td
                     class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
                   >
@@ -799,13 +799,14 @@
             </draggable>
           </table>
         </div>
-        <div class="mb-6">
+        <div class="mb-6 bg-white">
           <div class="bg-white p-5">
-            <p>04052023 - 1</p>
+            <p class="font-bold text-black text-2xl">04052023 - 1</p>
           </div>
           <table class="w-full bg-white">
             <thead class="bg-[#E5ECF5]">
               <tr>
+                <th class="w-[1px]"></th>
                 <th
                   v-for="(header, i) in treatment_proposal_headers1"
                   :key="i"
@@ -813,6 +814,7 @@
                 >
                   {{ header }}
                 </th>
+                <th></th>
               </tr>
             </thead>
             <draggable
@@ -825,6 +827,11 @@
             >
               <template #item="{ element, index }">
                 <tr :key="index">
+                  <td
+                    class="h-[64px] w-[1px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    <Icon name="mdi:drag-vertical" size="23" />
+                  </td>
                   <td
                     class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
                   >
@@ -866,10 +873,37 @@
                       {{ element.cost }}
                     </span>
                   </td>
+                  <td
+                    class="h-[64px] text-[#637381] text-sm font-normal px-6 py-2.5 whitespace-nowrap border-b-[1px] border-[#E6E8F0]"
+                  >
+                    <ReusablesBaseButton
+                      iconClass="text-[#D14343]"
+                      icon-left="delete"
+                      :left-size="16"
+                      className="flex justify-center items-center rounded border border-[#D14343] bg-white p-2 text-sm font-normal leading-4 text-[#0052CC]"
+                    />
+                  </td>
                 </tr>
               </template>
             </draggable>
           </table>
+          <div class="flex justify-between items-center gap-3 p-5 pb-0">
+            <div></div>
+            <div class="flex items-center gap-6 font-bold text-[32px]">
+              <p class="text-[#4F4F4F]">Total</p>
+              <p class="text-black">₹ 2,000.00</p>
+            </div>
+          </div>
+          <div class="flex justify-between items-center p-5">
+            <ReusablesBaseButton
+              label="Add Plan"
+              className="flex justify-center items-center rounded border border-[#0052CC] w-[120px] bg-white p-2.5 text-sm font-normal leading-4 text-[#0052CC]"
+            />
+            <ReusablesBaseButton
+              label="Save Plans"
+              className="flex justify-center items-center rounded w-[120px] bg-[#0052CC] p-2.5 text-sm font-normal leading-4 text-white"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -885,7 +919,6 @@
           :delete_btn="true"
           :onDelete="handleDelete"
           :view_btn="false"
-          :onView="handleView"
         >
         </ReusablesBaseTable>
       </div>
@@ -902,7 +935,6 @@
           :delete_btn="true"
           :onDelete="handleDelete"
           :view_btn="false"
-          :onView="handleView"
         >
         </ReusablesBaseTable>
       </div>

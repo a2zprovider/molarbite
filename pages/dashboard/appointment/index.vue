@@ -14,9 +14,7 @@
         :edit_btn="true"
         :onEdit="handleEdit"
         :delete_btn="false"
-        :onDelete="handleDelete"
         :view_btn="false"
-        :onView="handleView"
       >
         <template #issue_type="item">
           <div v-if="item.issue_type == 'treatment'">

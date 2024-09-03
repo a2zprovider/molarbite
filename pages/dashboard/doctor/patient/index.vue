@@ -45,7 +45,6 @@
         :edit_btn="true"
         :onEdit="handleEdit"
         :delete_btn="false"
-        :onDelete="handleDelete"
         :view_btn="true"
         :onView="handleView"
       >

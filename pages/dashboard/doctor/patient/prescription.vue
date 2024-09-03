@@ -3,7 +3,9 @@
     <div class="">
       <div class="border border-[#0052CC]">
         <div class="p-3 text-center bg-[#163BAC]">
-          <p class="font-inter text-white text-bold text-base">New Prescription</p>
+          <p class="font-inter text-white text-bold text-base">
+            New Prescription
+          </p>
         </div>
         <div class="bg-white p-5">
           <div class="mb-3 flex gap-3">
@@ -23,21 +25,28 @@
               <p class="font-semibold text-black text-xl">
                 Patient Name : Mayur N
               </p>
-              <p class="font-normal text-black text-xl">
-                24, M
-              </p>
+              <p class="font-normal text-black text-xl">24, M</p>
               <p class="font-normal text-black text-xl">Diagnosis: ---</p>
             </div>
             <div class="text-right">
               <p class="font-bold text-black text-xl">2020/08/03</p>
-              <p class="font-normal text-black text-xl">Prescription ID: 123456789</p>
+              <p class="font-normal text-black text-xl">
+                Prescription ID: 123456789
+              </p>
             </div>
           </div>
           <div class="mb-3">
-            <ReusablesBaseTable :srNo="true" :headers="headers" :data="items" :row-selector="false" :edit_btn="false"
-              :delete_btn="false" :view_btn="false">
+            <ReusablesBaseTable
+              :srNo="true"
+              :headers="headers"
+              :data="items"
+              :row-selector="false"
+              :edit_btn="false"
+              :delete_btn="false"
+              :view_btn="false"
+            >
               <template #frequency="item">
-                <div class="flex  gap-3">
+                <div class="flex gap-3">
                   <div class="text-center">
                     <p>{{ item.frequency.morning }}</p>
                     <p>Morning</p>
@@ -52,7 +61,6 @@
                     <p>Evening</p>
                   </div>
                 </div>
-
               </template>
               <template #treatment_name="item">
                 <div>
@@ -64,8 +72,10 @@
             </ReusablesBaseTable>
           </div>
           <div class="flex justify-center gap-3">
-            <ReusablesBaseButton label="Close"
-              className="flex justify-center items-center rounded font-inter w-[120px] bg-[#0052CC] px-4 py-2 text-xs font-semibold leading-4 text-white" />
+            <ReusablesBaseButton
+              label="Close"
+              className="flex justify-center items-center rounded font-inter w-[120px] bg-[#0052CC] px-4 py-2 text-xs font-semibold leading-4 text-white"
+            />
           </div>
         </div>
       </div>
@@ -90,7 +100,7 @@ const items = [
   {
     treatment_name: "Capsule Novamox LB",
     rate: "100 mg",
-    frequency: { 'morning': 1, 'afternoon': 0, 'evening': 1, 'note': 'Before Food' },
+    frequency: { morning: 1, afternoon: 0, evening: 1, note: "Before Food" },
     duration: "5 Days",
     qty: "10",
     refills: "1",
@@ -98,7 +108,7 @@ const items = [
   {
     treatment_name: "Capsule Novamox LB",
     rate: "100 mg",
-    frequency: { 'morning': 1, 'afternoon': 0, 'evening': 1, 'note': 'Before Food' },
+    frequency: { morning: 1, afternoon: 0, evening: 1, note: "Before Food" },
     duration: "5 Days",
     qty: "10",
     refills: "1",
@@ -106,7 +116,7 @@ const items = [
   {
     treatment_name: "Capsule Novamox LB",
     rate: "100 mg",
-    frequency: { 'morning': 1, 'afternoon': 0, 'evening': 1, 'note': 'Before Food' },
+    frequency: { morning: 1, afternoon: 0, evening: 1, note: "Before Food" },
     duration: "5 Days",
     qty: "10",
     refills: "1",
