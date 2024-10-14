@@ -2,6 +2,7 @@
   <div>
     <label class="label-style" :for="label" v-if="label">
       {{ label }}
+      <span v-if="isRequired" class="red-asterisk">*</span>
     </label>
     <!-- Using Default HTML select -->
 
@@ -69,6 +70,7 @@ interface Props {
   className?: string;
   error?: string | boolean;
   options: (string | number)[];
+  isRequired?: boolean;
 }
 
 const emit = defineEmits(["changeType", "update:modelValue"]);
@@ -83,5 +85,8 @@ defineProps<Props>();
 }
 .vs--single .vs__selected {
   color: #8f95b2;
+}
+.red-asterisk {
+  color: #FF0000;
 }
 </style>

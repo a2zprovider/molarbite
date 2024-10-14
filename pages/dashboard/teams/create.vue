@@ -19,55 +19,55 @@
         <form class="space-y-6 w-full">
           <div class="grid grid-cols-2 gap-4">
             <ReusablesBaseInput
-              label="First Name*"
+              label="First Name"
               v-model="state.first_name"
+              isRequired="true"
               type="taxt"
               placeholder="First Name"
-              className=""
               :error="v$.first_name.$error"
               error-message="First name is required"
               @blur="v$.first_name.$touch()"
               @focus="v$.first_name.$reset()"
             />
             <ReusablesBaseInput
-              label="Last Name*"
+              label="Last Name"
               v-model="state.last_name"
+              isRequired="true"
               type="taxt"
               placeholder="Last Name"
-              className=""
               :error="v$.last_name.$error"
               error-message="Last name is required"
               @blur="v$.last_name.$touch()"
               @focus="v$.last_name.$reset()"
             />
             <ReusablesBaseInput
-              label="Email*"
+              label="Email"
               v-model="state.email"
+              isRequired="true"
               type="email"
               placeholder="Email"
-              className=""
               :error="v$.email.$error"
               error-message="Email is required"
               @blur="v$.email.$touch()"
               @focus="v$.email.$reset()"
             />
             <ReusablesBaseInput
-              label="Mobile Number*"
+              label="Mobile Number"
               v-model="state.mobile"
+              isRequired="true"
               type="mobile"
               placeholder="+91 00000 00000"
-              className=""
               :error="v$.mobile.$error"
               error-message="Mobile number is required"
               @blur="v$.mobile.$touch()"
               @focus="v$.mobile.$reset()"
             />
             <ReusablesBaseInput
-              label="Date of Birth*"
+              label="Date of Birth"
               v-model="state.date_of_birth"
+              isRequired="true"
               type="date"
               placeholder="dd/mm/yyyy"
-              className=""
               :error="v$.date_of_birth.$error"
               error-message="Date of birth is required"
               @blur="v$.date_of_birth.$touch()"
@@ -76,8 +76,9 @@
 
             <ReusablesBaseSelect
               v-model="state.gender"
-              label="Gender*"
+              label="Gender"
               :options="genders"
+              isRequired="true"
               placeholder="Select Gender"
               :error="v$.gender.$error"
               @blur="v$.gender.$touch()"
@@ -85,7 +86,8 @@
             />
             <ReusablesBaseSelect
               v-model="state.role"
-              label="Role*"
+              label="Role"
+              isRequired="true"
               :options="roles"
               placeholder="Select Role"
               :error="v$.role.$error"
@@ -94,7 +96,8 @@
             />
             <ReusablesBaseSelect
               v-model="state.branch"
-              label="Branch*"
+              label="Branch"
+              isRequired="true"
               :options="branches"
               placeholder="Select Branch"
               :error="v$.branch.$error"

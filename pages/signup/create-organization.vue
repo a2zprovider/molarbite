@@ -14,8 +14,9 @@
       <div class="font-light w-full text-left text-lg">
         <form class="space-y-6 w-full" @submit.prevent>
           <ReusablesBaseInput
-            label="Registration Number (Provided by Council)*"
+            label="Registration Number (Provided by Council)"
             v-model="state.registration_number"
+            isRequired="true"
             type="registration_number"
             placeholder="Registration Number"
             :error="v$.registration_number.$error"
@@ -26,19 +27,22 @@
 
           <ReusablesBaseFile
             v-model="state.upload_certificate"
-            label="Registration Certificate*"
+            label="Registration Certificate"
+            isRequired="true"
             file-type="image/*"
-            placeholder="Registration Number"
+            placeholder="Registration Certificate"
             className="flex relative justify-center w-full text-xs rounded border-[1px] border-[#C1C4D6] p-1.5 px-2 text-[#8F95B2] ring-0 ring-inset ring-[#8F95B2] placeholder:text-[#8F95B2] outline-0 focus:outline-0 focus:ring-0 focus:ring-inset focus:ring-[#8F95B2] file:text-[#8F95B2] file:border-0 file:border-l-[1px] file:border-[#C1C4D6] file:px-2 file:rounded file:bg-transparent file:absolute file:right-0 file:top-0 file:bottom-0 file:text-foreground file:text-xs file:font-medium"
             :error="v$.upload_certificate.$error"
+            error-message="Registration certificate is required"
             @blur="v$.upload_certificate.$touch()"
             @focus="v$.upload_certificate.$reset()"
           />
           <ReusablesBaseInput
-            label="Renewal Date*"
+            label="Renewal Date"
             v-model="state.date"
             type="date"
             placeholder="Renewal Date"
+            isRequired="true"
             :error="v$.date.$error"
             error-message="Renewal date is required"
             @blur="v$.date.$touch()"

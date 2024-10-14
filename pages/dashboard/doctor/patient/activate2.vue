@@ -45,7 +45,7 @@
       <div>
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
-            >What is your current health like?*</label
+            >What is your current health like?<span class="text-[#ff0000]">*</span></label
           >
           <div class="flex items-center gap-3 mt-2">
             <div>
@@ -97,7 +97,7 @@
         </div>
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
-            >What are your current medical conditions (Select all that apply.)*
+            >What are your current medical conditions (Select all that apply.)<span class="text-[#ff0000]">*</span>
           </label>
           <div class="flex items-center gap-3 mt-2">
             <label
@@ -245,7 +245,7 @@
         </div>
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
-            >List of Current Medication*</label
+            >List of Current Medication<span class="text-[#ff0000]">*</span></label
           >
           <div v-for="n in state.input_count" :key="n" class="mt-2 max-w-80">
             <div class="flex items-center gap-3">
@@ -284,7 +284,7 @@
 
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
-            >What allergies do you have? (Select all that apply.)*</label
+            >What allergies do you have? (Select all that apply.)<span class="text-[#ff0000]">*</span></label
           >
           <div class="flex items-center gap-3 mt-2">
             <label
@@ -348,7 +348,7 @@
 
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
-            >Do you smoke or consume alcohol?*</label
+            >Do you smoke or consume alcohol?<span class="text-[#ff0000]">*</span></label
           >
           <div class="flex items-center gap-3 mt-2">
             <label
@@ -402,7 +402,7 @@
         </div>
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
-            >Are you pregnant?*</label
+            >Are you pregnant?<span class="text-[#ff0000]">*</span></label
           >
           <div class="flex items-center gap-3 mt-2">
             <div>

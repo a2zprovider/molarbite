@@ -955,34 +955,42 @@
           <div class="mb-2">
             <ReusablesBaseSelect
               v-model="state.type_name"
-              label="Type*"
+              label="Type"
+              isRequired="true"
               :options="types"
               placeholder="Type"
+              :error="v$.type_name.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseSelect
               v-model="state.age"
-              label="Age Group*"
+              label="Age Group"
+              isRequired="true"
               :options="ages"
               placeholder="Age"
+              :error="v$.age.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseFile
               v-model="state.file"
-              label="File*"
+              label="File"
+              isRequired="true"
               file-type="image/*"
               placeholder="File"
+              :error="v$.file.$error"
               className="flex relative justify-center w-full text-xs rounded border-[1px] border-[#C1C4D6] p-1.5 px-2 text-[#8F95B2] ring-0 ring-inset ring-[#8F95B2] placeholder:text-[#8F95B2] outline-0 focus:outline-0 focus:ring-0 focus:ring-inset focus:ring-[#8F95B2] file:text-[#8F95B2] file:border-0 file:border-l-[1px] file:border-[#C1C4D6] file:px-2 file:rounded file:bg-transparent file:absolute file:right-0 file:top-0 file:bottom-0 file:text-foreground file:text-xs file:font-medium"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseInput
-              label="Tooth Number*"
+              label="Tooth Number"
+              isRequired="true"
               v-model="state.tooth_number"
               type="taxt"
               placeholder="Tooth Number"
+              :error="v$.tooth_number.$error"
             />
           </div>
           <div class="flex justify-center items-center gap-2">
@@ -1011,48 +1019,60 @@
           <div class="mb-2">
             <ReusablesBaseSelect
               v-model="state.type_name1"
-              label="Type*"
+              label="Type"
+              isRequired="true"
               :options="types1"
               placeholder="Type"
+              :error="v$.type_name1.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseSelect
               v-model="state.location"
-              label="Location*"
+              label="Location"
+              isRequired="true"
               :options="locations"
               placeholder="Location"
+              :error="v$.location.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseInput
-              label="Price*"
+              label="Price"
               v-model="state.price"
+              isRequired="true"
               type="taxt"
               placeholder="₹ 0.00"
+              :error="v$.price.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseInput
-              label="Date*"
+              label="Date"
               v-model="state.date"
+              isRequired="true"
               type="date"
+              :error="v$.date.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseInput
-              label="Observations*"
+              label="Observations"
               v-model="state.observations"
+              isRequired="true"
               type="taxt"
               placeholder="Observations"
+              :error="v$.observations.$error"
             />
           </div>
           <div class="mb-5">
             <ReusablesBaseFile
               v-model="state.file1"
-              label="File*"
+              label="File"
+              isRequired="true"
               file-type="image/*"
               placeholder="File"
+              :error="v$.file1.$error"
               className="flex relative justify-center w-full text-xs rounded border-[1px] border-[#C1C4D6] p-1.5 px-2 text-[#8F95B2] ring-0 ring-inset ring-[#8F95B2] placeholder:text-[#8F95B2] outline-0 focus:outline-0 focus:ring-0 focus:ring-inset focus:ring-[#8F95B2] file:text-[#8F95B2] file:border-0 file:border-l-[1px] file:border-[#C1C4D6] file:px-2 file:rounded file:bg-transparent file:absolute file:right-0 file:top-0 file:bottom-0 file:text-foreground file:text-xs file:font-medium"
             />
           </div>
@@ -1082,41 +1102,51 @@
           <div class="mb-2">
             <ReusablesBaseSelect
               v-model="state.tooth_number1"
-              label="Tooth Number*"
+              label="Tooth Number"
+              isRequired="true"
               :options="tooth_numbers"
               placeholder="Tooth Number"
+              :error="v$.tooth_number1.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseSelect
               v-model="state.tooth_surface"
-              label="Tooth Surface*"
+              label="Tooth Surface"
+              isRequired="true"
               :options="tooth_surfaces"
               placeholder="Tooth Surface"
+              :error="v$.tooth_surface.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseSelect
               v-model="state.diagnosis"
-              label="Diagnosis*"
+              label="Diagnosis"
+              isRequired="true"
               :options="diagnosiss"
               placeholder="Diagnosis"
+              :error="v$.diagnosis.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseSelect
               v-model="state.severity"
-              label="Severity*"
+              label="Severity"
+              isRequired="true"
               :options="severities"
               placeholder="Severity"
+              :error="v$.severity.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseSelect
               v-model="state.treating_doctor"
-              label="Treating Doctor*"
+              label="Treating Doctor"
+              isRequired="true"
               :options="treating_doctors"
               placeholder="Treating Doctor"
+              :error="v$.treating_doctor.$error"
             />
           </div>
           <div class="flex justify-center items-center gap-2 mt-5">
@@ -1497,6 +1527,28 @@ const state = reactive<{
   isVisible2: false,
   isPopup: true,
 });
+
+// Validation rules
+const rules = {
+  type_name: { required },
+  age: { required },
+  tooth_number: { required },
+  file: { required },
+
+  type_name1: { required },
+  location: { required },
+  price: { required },
+  date: { required },
+  observations: { required },
+  file1: { required },
+
+  tooth_number1: { required },
+  tooth_surface: { required },
+  diagnosis: { required },
+  severity: { required },
+  treating_doctor: { required },
+};
+const v$ = useVuelidate(rules, state);
 </script>
 
 <style scoped>

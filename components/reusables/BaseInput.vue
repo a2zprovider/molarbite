@@ -1,17 +1,25 @@
 <template>
   <!-- Base Input (text, email, password) -->
-  <div>
-    <label v-if="label" class="label-style" :for="label">{{ label }}</label>
+  <div :class="inputClass">
+    <label
+      v-if="label"
+      class="block text-base font-inter font-medium leading-6 text-black mb-2"
+      :for="label"
+      >{{ label }} <span v-if="isRequired" class="red-asterisk">*</span>
+    </label>
     <div>
       <input
         :id="label"
-        class="input-style" 
-        :class="{ err: error }"
+        :class="[
+          'block w-full h-[32px] text-xs rounded border-[1px] border-[#C1C4D6] p-1.5 px-2 text-[#8F95B2] ring-0 ring-inset ring-[#8F95B2] placeholder:text-[#8F95B2] outline-0 focus:outline-0 focus:ring-0 focus:ring-inset focus:ring-[#8F95B2]',
+          { 'err': error }
+        ]"
         :type="type"
         :value="modelValue"
         :placeholder="placeholder"
         v-bind="$attrs"
-        @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)">
+        @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
+      />
       <span
         v-if="password"
         class="mdi absolute top-1/2 -translate-y-1/2 right-4 cursor-pointer"
@@ -47,10 +55,22 @@ interface Props {
   password?: boolean;
   error?: string | boolean;
   errorMessage?: string | boolean;
+  isRequired?: boolean;
+  inputClass?: string;
 }
 
 const _props = defineProps<Props>();
 const _emit = defineEmits(["changeType", "update:modelValue"]);
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.label-style {
+  @apply block text-base font-inter font-medium leading-6 text-black mb-2;
+}
+.input-style {
+  @apply block w-full h-[32px] text-xs rounded border-[1px] border-[#C1C4D6] p-1.5 px-2 text-[#8F95B2] ring-0 ring-inset ring-[#8F95B2] placeholder:text-[#8F95B2] outline-0 focus:outline-0 focus:ring-0 focus:ring-inset focus:ring-[#8F95B2] !important;
+}
+.red-asterisk {
+  color: #FF0000;
+}
+</style>

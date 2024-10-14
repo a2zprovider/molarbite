@@ -24,6 +24,7 @@
                 <ReusablesBaseRadio
                   id="ridgetop-dental"
                   v-model="state.selectBranch"
+                  @change="onAddBranch"
                   class="hidden peer"
                   type="radio"
                   name="hosting"
@@ -46,6 +47,7 @@
                 <ReusablesBaseRadio
                   id="smile-dental-clinic"
                   v-model="state.selectBranch"
+                  @change="onAddBranch"
                   class="hidden peer"
                   type="radio"
                   name="hosting"
@@ -72,6 +74,7 @@
                 <ReusablesBaseRadio
                   id="shine-bright-dental"
                   v-model="state.selectBranch"
+                  @change="onAddBranch"
                   class="hidden peer"
                   type="radio"
                   name="hosting"
@@ -100,6 +103,12 @@
             />
           </div>
         </form>
+        <SuccessComponent
+          v-if="showMessage"
+          message="Branch added successfully."
+          :show="showMessage"
+          @update="(state:boolean)=>{showMessage=state}"
+        />
       </div>
     </div>
     <div class="inline-flex items-center justify-center w-full">
@@ -114,11 +123,24 @@
 </template>
 
 <script setup lang="ts">
+import SuccessComponent from "~/components/toaster/SuccessComponent.vue";
+
+const showMessage = ref(false);
+
+const onAddBranch = async () => {
+  if (!state.status) {
+    showMessage.value = true;
+    state.status = true;
+  }
+};
+
 // Form inputs
 const state = reactive<{
   selectBranch: string;
+  status: boolean;
 }>({
   selectBranch: "",
+  status: false,
 });
 
 const submitForm = async () => {

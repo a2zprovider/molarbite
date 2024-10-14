@@ -84,42 +84,52 @@
           </p>
           <div class="mb-2">
             <ReusablesBaseInput
-              label="Full Name*"
+              label="Full Name"
               v-model="state.full_name"
+              isRequired="true"
               type="taxt"
               placeholder="Full Name"
+              :error="v$.full_name.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseInput
-              label="Email ID*"
+              label="Email ID"
               v-model="state.email"
+              isRequired="true"
               type="email"
               placeholder="Email ID"
+              :error="v$.email.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseInput
-              label="Mobile Number*"
+              label="Mobile Number"
               v-model="state.mobile"
+              isRequired="true"
               type="taxt"
               placeholder="+91 99999 99999"
+              :error="v$.mobile.$error"
             />
           </div>
           <div class="mb-5 flex items-center gap-2">
             <ReusablesBaseInput
-              label="Date of Birth*"
+              label="Date of Birth"
               v-model="state.date_of_birth"
+              isRequired="true"
               type="date"
               placeholder="DD/MM/YYYY"
               class="w-full"
+              :error="v$.date_of_birth.$error"
             />
             <ReusablesBaseInput
-              label="Age*"
+              label="Age"
               v-model="state.age"
+              isRequired="true"
               type="taxt"
               placeholder="00"
               class="w-full"
+              :error="v$.age.$error"
             />
           </div>
           <div class="flex justify-end items-center gap-2">
@@ -153,42 +163,52 @@
           </p>
           <div class="mb-2">
             <ReusablesBaseInput
-              label="Full Name*"
+              label="Full Name"
               v-model="state.full_name"
+              isRequired="true"
               type="taxt"
               placeholder="Full Name"
+              :error="v$.full_name.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseInput
-              label="Email ID*"
+              label="Email ID"
               v-model="state.email"
+              isRequired="true"
               type="email"
               placeholder="Email ID"
+              :error="v$.email.$error"
             />
           </div>
           <div class="mb-2">
             <ReusablesBaseInput
-              label="Mobile Number*"
+              label="Mobile Number"
               v-model="state.mobile"
+              isRequired="true"
               type="taxt"
               placeholder="+91 99999 99999"
+              :error="v$.mobile.$error"
             />
           </div>
           <div class="mb-5 flex items-center gap-2">
             <ReusablesBaseInput
-              label="Date of Birth*"
+              label="Date of Birth"
               v-model="state.date_of_birth"
+              isRequired="true"
               type="date"
               placeholder="DD/MM/YYYY"
               class="w-full"
+              :error="v$.date_of_birth.$error"
             />
             <ReusablesBaseInput
-              label="Age*"
+              label="Age"
               v-model="state.age"
+              isRequired="true"
               type="taxt"
               placeholder="00"
               class="w-full"
+              :error="v$.age.$error"
             />
           </div>
           <div class="flex justify-end items-center gap-2">
@@ -283,6 +303,16 @@ const state = reactive<{
   isVisible: false,
   isVisible1: false,
 });
+
+// Validation rules
+const rules = {
+  full_name: { required },
+  email: { required },
+  mobile: { required },
+  date_of_birth: { required },
+  age: { required },
+};
+const v$ = useVuelidate(rules, state);
 </script>
 
 <style scoped></style>

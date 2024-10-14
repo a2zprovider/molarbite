@@ -94,7 +94,7 @@
   }
 
   .err {
-    @apply rounded-[4px] border-solid border border-[#EF4444] mb-2 !important;
+    @apply rounded-[4px] border-solid border border-[#EF4444] !important;
   }
 
   .err-message {
@@ -157,11 +157,11 @@
   }
 
   .err {
-    @apply rounded-[4px] border-solid border border-[#EF4444] mb-2 !important;
+    @apply rounded-[4px] border-solid border border-[#EF4444] !important;
   }
 
   .err.ql-editor {
-    @apply rounded-b-[4px] border-solid border border-[#EF4444] mb-2 !important;
+    @apply rounded-b-[4px] border-solid border border-[#EF4444];
   }
 
   .err .ql-editor.ql-blank::before {

@@ -45,7 +45,7 @@
       <div>
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
-            >When was your last dental visit?*</label
+            >When was your last dental visit?<span class="text-[#ff0000]">*</span></label
           >
           <div class="flex items-center gap-3 mt-2">
             <div>
@@ -112,7 +112,7 @@
         </div>
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
-            >Do you experience any of the following?*</label
+            >Do you experience any of the following?<span class="text-[#ff0000]">*</span></label
           >
           <div class="flex items-center gap-3 mt-2">
             <label
@@ -190,7 +190,7 @@
         </div>
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
-            >Rate your dental fear.*</label
+            >Rate your dental fear.<span class="text-[#ff0000]">*</span></label
           >
           <div class="flex items-center gap-3 mt-2">
             <div>
@@ -258,7 +258,7 @@
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
             >What is the reason for today's visit? (Select all that
-            apply.)*</label
+            apply.)<span class="text-[#ff0000]">*</span></label
           >
           <div class="flex items-center gap-3 mt-2">
             <label

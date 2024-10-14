@@ -47,11 +47,11 @@
           <p class="text-sm font-medium text-[#0052CC]">New Branch</p>
 
           <ReusablesBaseInput
-            label="Add Branch*"
+            label="Add Branch"
             v-model="state.branch_name"
+            isRequired="true"
             type="taxt"
             placeholder="Enter Branch Name"
-            className=""
             :error="v$.branch_name.$error"
             error-message="Branch is required"
             @blur="v$.branch_name.$touch()"
@@ -59,11 +59,12 @@
           />
           <div>
             <ReusablesBaseInput
-              label="Branch Address*"
+              label="Branch Address"
               v-model="state.branch_address"
+              isRequired="true"
               type="branch_address"
-              placeholder="Address Line 1*"
-              className="mb-2 "
+              placeholder="Address Line 1"
+              inputClass="mb-2"
               :error="v$.branch_address.$error"
               error-message="Address is required"
               @blur="v$.branch_address.$touch()"
@@ -73,7 +74,7 @@
               v-model="state.branch_address1"
               type="branch_address1"
               placeholder="Address Line 2"
-              className="mb-2 "
+              inputClass="mb-2"
               :error="v$.branch_address1.$error"
               error-message="Address is required"
               @blur="v$.branch_address1.$touch()"
@@ -83,8 +84,9 @@
               <ReusablesBaseInput
                 v-model="state.state"
                 type="text"
-                placeholder="State*"
-                className="mb-2 "
+                placeholder="State"
+                isRequired="true"
+                inputClass="mb-2"
                 :error="v$.state.$error"
                 error-message="state is required"
                 @blur="v$.state.$touch()"
@@ -93,8 +95,9 @@
               <ReusablesBaseInput
                 v-model="state.pincode"
                 type="text"
-                placeholder="pincode*"
-                className="mb-2 "
+                placeholder="pincode"
+                isRequired="true"
+                inputClass="mb-2"
                 :error="v$.pincode.$error"
                 error-message="pincode is required"
                 @blur="v$.pincode.$touch()"
@@ -105,8 +108,8 @@
             <ReusablesBaseInput
               v-model="state.map"
               type="text"
-              placeholder="Google Map Link*"
-              className=""
+              placeholder="Google Map Link"
+              isRequired="true"
               :error="v$.map.$error"
               error-message="Map is required"
               @blur="v$.map.$touch()"

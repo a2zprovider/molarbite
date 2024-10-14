@@ -1,29 +1,36 @@
 <template>
-  <div class="flex flex-col text-center px-4 bg-main h-screen conatiner">
-    <div class="mt-2">
-      <NuxtLink to="/">
-        <img src="/assets/img/logo.png" height="80px" width="233px" />
-      </NuxtLink>
+  <div class="relative" style="z-index: 1">
+    <div
+      class="flex flex-col text-center px-4 h-screen conatiner relative"
+      style="z-index: 10"
+    >
+      <div class="mt-2 logo">
+        <NuxtLink to="/">
+          <img src="/assets/img/logo.png" height="80px" width="233px" />
+        </NuxtLink>
+      </div>
+      <NuxtLoadingIndicator />
+      <slot />
     </div>
-    <NuxtLoadingIndicator />
-    <slot />
-    <div class="left-vector">
-      <img
-        src="assets/img/left-vector-bg.png"
-        alt=""
-        srcset=""
-        height="100"
-        width="200"
-      />
-    </div>
-    <div class="right-vector">
-      <img
-        src="assets/img/right-vector-bg.png"
-        alt=""
-        srcset=""
-        height="100"
-        width="200"
-      />
+    <div class="bg-main fixed top-0 bottom-0 left-0 right-0" style="z-index: 1">
+      <div class="left-vector">
+        <img
+          src="assets/img/left-vector-bg.png"
+          alt=""
+          srcset=""
+          height="100"
+          width="200"
+        />
+      </div>
+      <div class="right-vector">
+        <img
+          src="assets/img/right-vector-bg.png"
+          alt=""
+          srcset=""
+          height="100"
+          width="200"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -43,6 +50,9 @@
   position: absolute;
   right: 0;
   top: 0;
+}
+.logo {
+  position: absolute;
 }
 </style>
   

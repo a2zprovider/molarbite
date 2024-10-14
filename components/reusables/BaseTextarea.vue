@@ -1,7 +1,9 @@
 <template>
   <!-- Base Textarea -->
   <div>
-    <label v-if="label" class="label-style" :for="label">{{ label }}</label>
+    <label v-if="label" class="label-style" :for="label"
+      >{{ label }} <span v-if="isRequired" class="red-asterisk">*</span>
+    </label>
     <textarea
       :id="label"
       :placeholder="placeholder"
@@ -37,10 +39,15 @@ interface Props {
   placeholder?: string;
   error?: string | boolean;
   errorMessage?: string | boolean;
+  isRequired?: boolean;
 }
 
 const _props = defineProps<Props>();
 const _emit = defineEmits(["update:modelValue"]);
 </script>
 
-<style lang="scss" scoped></style>
+<style  scoped>
+.red-asterisk {
+  color: #FF0000;
+}
+</style>

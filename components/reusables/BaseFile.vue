@@ -1,7 +1,10 @@
 <template>
   <!-- Base File -->
   <div>
-    <label class="label-style" :for="label" v-if="label">{{ label }}</label>
+    <label class="label-style" :for="label" v-if="label"
+      >{{ label }}
+      <span v-if="isRequired" class="red-asterisk">*</span>
+    </label>
     <div class="mt-2">
       <input
         :id="label"
@@ -14,7 +17,7 @@
           $emit('update:modelValue', multiple ? ($event.target as HTMLFormElement).files : ($event.target as HTMLFormElement).files[0])
         }
       }"
-        :class="className"
+        :class="[className, { 'err': error }]"
         :accept="fileType"
       />
       <small
@@ -46,10 +49,15 @@ interface Props {
   error?: string | boolean;
   errorMessage?: string | boolean;
   multiple?: boolean;
+  isRequired?: boolean;
 }
 
 const props = defineProps<Props>();
 const emit = defineEmits(["update:modelValue"]);
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.red-asterisk {
+  color: #FF0000;
+}
+</style>

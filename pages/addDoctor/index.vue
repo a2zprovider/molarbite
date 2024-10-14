@@ -19,55 +19,55 @@
         <form class="space-y-6 w-full">
           <div class="grid grid-cols-2 gap-4">
             <ReusablesBaseInput
-              label="First Name*"
+              label="First Name"
               v-model="state.first_name"
+              isRequired="true"
               type="taxt"
               placeholder="First Name"
-              className=""
               :error="v$.first_name.$error"
               error-message="First name is required"
               @blur="v$.first_name.$touch()"
               @focus="v$.first_name.$reset()"
             />
             <ReusablesBaseInput
-              label="Last Name*"
+              label="Last Name"
               v-model="state.last_name"
+              isRequired="true"
               type="taxt"
               placeholder="Last Name"
-              className=""
               :error="v$.last_name.$error"
               error-message="Last name is required"
               @blur="v$.last_name.$touch()"
               @focus="v$.last_name.$reset()"
             />
             <ReusablesBaseInput
-              label="Email*"
+              label="Email"
               v-model="state.email"
+              isRequired="true"
               type="email"
               placeholder="Email"
-              className=""
               :error="v$.email.$error"
               error-message="Email is required"
               @blur="v$.email.$touch()"
               @focus="v$.email.$reset()"
             />
             <ReusablesBaseInput
-              label="Mobile Number*"
+              label="Mobile Number"
               v-model="state.mobile"
+              isRequired="true"
               type="mobile"
               placeholder="+91 00000 00000"
-              className=""
               :error="v$.mobile.$error"
               error-message="Mobile number is required"
               @blur="v$.mobile.$touch()"
               @focus="v$.mobile.$reset()"
             />
             <ReusablesBaseInput
-              label="Date of Birth*"
+              label="Date of Birth"
               v-model="state.date_of_birth"
+              isRequired="true"
               type="date"
               placeholder="dd/mm/yyyy"
-              className=""
               :error="v$.date_of_birth.$error"
               error-message="Date of birth is required"
               @blur="v$.date_of_birth.$touch()"
@@ -76,7 +76,8 @@
 
             <ReusablesBaseSelect
               v-model="state.gender"
-              label="Gender*"
+              label="Gender"
+              isRequired="true"
               :options="genders"
               placeholder="Select Gender"
               :error="v$.gender.$error"
@@ -85,7 +86,8 @@
             />
             <ReusablesBaseSelect
               v-model="state.specialization"
-              label="Specialization*"
+              label="Specialization"
+              isRequired="true"
               :options="specializations"
               placeholder="Select Specialization"
               :error="v$.specialization.$error"
@@ -94,7 +96,8 @@
             />
             <ReusablesBaseSelect
               v-model="state.branch"
-              label="Branch*"
+              label="Branch"
+              isRequired="true"
               :options="branches"
               placeholder="Select Branch"
               :error="v$.branch.$error"
@@ -103,11 +106,11 @@
             />
 
             <ReusablesBaseInput
-              label="State Dental Reg No.*"
+              label="State Dental Reg No."
               v-model="state.reg_no"
+              isRequired="true"
               type="text"
               placeholder="000000000000000"
-              className=""
               :error="v$.reg_no.$error"
               error-message="State Dental Reg No. is required"
               @blur="v$.reg_no.$touch()"
@@ -116,7 +119,8 @@
 
             <ReusablesBaseFile
               v-model="state.upload_certificate"
-              label="Upload Certificate*"
+              label="Upload Certificate"
+              isRequired="true"
               file-type="image/*"
               placeholder="Registration Number"
               className="flex relative justify-center w-full text-xs rounded border-[1px] border-[#C1C4D6] p-1.5 px-2 text-[#8F95B2] ring-0 ring-inset ring-[#8F95B2] placeholder:text-[#8F95B2] outline-0 focus:outline-0 focus:ring-0 focus:ring-inset focus:ring-[#8F95B2] file:text-[#8F95B2] file:border-0 file:border-l-[1px] file:border-[#C1C4D6] file:px-2 file:rounded file:bg-transparent file:absolute file:right-0 file:top-0 file:bottom-0 file:text-foreground file:text-xs file:font-medium"

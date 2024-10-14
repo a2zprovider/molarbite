@@ -17,7 +17,9 @@
             <ReusablesBaseInput
               v-model="state.phoneNumber"
               type="text"
+              oninput="this.value = this.value.replace(/[^0-9+]/g, '');"
               label="Enter Mobile Number"
+              maxlength="15"
               :placeholder="'+91 00000 00000'"
               :error="v$.phoneNumber.$error"
               @blur="v$.phoneNumber.$touch()"

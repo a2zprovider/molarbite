@@ -45,18 +45,22 @@
       <div class="grid grid-cols-3 gap-3">
         <div class="mb-2">
           <ReusablesBaseInput
-            label="Full Name*"
+            label="Full Name"
             v-model="state.full_name"
+            isRequired="true"
             type="taxt"
             placeholder="Full Name"
+            :error="v$.full_name.$error"
           />
         </div>
         <div class="mb-2">
           <ReusablesBaseInput
-            label="Mobile Number*"
+            label="Mobile Number"
             v-model="state.mobile"
+            isRequired="true"
             type="taxt"
             placeholder="+91 99999 99999"
+            :error="v$.mobile.$error"
           />
         </div>
         <div class="mb-2">
@@ -69,10 +73,12 @@
         </div>
         <div class="mb-2">
           <ReusablesBaseInput
-            label="Email ID*"
+            label="Email ID"
             v-model="state.email"
+            isRequired="true"
             type="email"
             placeholder="Email ID"
+            :error="v$.email.$error"
           />
         </div>
         <div class="mb-2">
@@ -86,35 +92,44 @@
         <div class="mb-2">
           <ReusablesBaseSelect
             v-model="state.language"
-            label="Language*"
+            label="Language"
+            isRequired="true"
             :options="languages"
             placeholder="Select Language"
+            :error="v$.language.$error"
           />
         </div>
         <div class="mb-2">
           <ReusablesBaseInput
-            label="Address*"
+            label="Address"
             v-model="state.address"
+            isRequired="true"
             type="taxt"
             placeholder="Address"
+            :error="v$.address.$error"
           />
         </div>
         <div class="mb-2">
           <ReusablesBaseInput
-            label="Pincode*"
+            label="Pincode"
             v-model="state.pincode"
+            isRequired="true"
             type="taxt"
             placeholder="000000"
+            :error="v$.pincode.$error"
           />
         </div>
         <div class="mb-2">
-          <label for="gender" class="label-style">Gender*</label>
+          <label for="gender" class="label-style"
+            >Gender<span class="text-[#ff0000]">*</span></label
+          >
           <div class="flex items-center gap-3">
             <div>
               <ReusablesBaseRadio
                 id="male"
-                label="gender*"
+                label="gender"
                 v-model="state.gender"
+                isRequired="true"
                 class="peer"
                 type="radio"
                 name="gender"
@@ -124,8 +139,9 @@
             <div>
               <ReusablesBaseRadio
                 id="female"
-                label="gender*"
+                label="gender"
                 v-model="state.gender"
+                isRequired="true"
                 class="peer"
                 type="radio"
                 name="gender"
@@ -135,8 +151,9 @@
             <div>
               <ReusablesBaseRadio
                 id="others"
-                label="gender*"
+                label="gender"
                 v-model="state.gender"
+                isRequired="true"
                 class="peer"
                 type="radio"
                 name="gender"
@@ -147,34 +164,42 @@
         </div>
         <div class="mb-2">
           <ReusablesBaseInput
-            label="City*"
+            label="City"
             v-model="state.city"
+            isRequired="true"
             type="taxt"
             placeholder="City"
+            :error="v$.city.$error"
           />
         </div>
         <div class="mb-2">
           <ReusablesBaseInput
-            label="Employer*"
+            label="Employer"
             v-model="state.employer"
+            isRequired="true"
             type="taxt"
             placeholder="Employer"
+            :error="v$.employer.$error"
           />
         </div>
         <div class="mb-2">
           <ReusablesBaseSelect
             v-model="state.occupation"
-            label="Occupation*"
+            label="Occupation"
+            isRequired="true"
             :options="occupations"
             placeholder="Select Occupation"
+            :error="v$.occupation.$error"
           />
         </div>
         <div class="mb-2">
           <ReusablesBaseFile
             v-model="state.profle_picture"
-            label="Upload Profile Picture*"
+            label="Upload Profile Picture"
+            isRequired="true"
             file-type="image/*"
             placeholder="Upload Profile Picture"
+            :error="v$.profle_picture.$error"
             className="flex relative justify-center w-full text-xs rounded border-[1px] border-[#C1C4D6] p-1.5 px-2 text-[#8F95B2] ring-0 ring-inset ring-[#8F95B2] placeholder:text-[#8F95B2] outline-0 focus:outline-0 focus:ring-0 focus:ring-inset focus:ring-[#8F95B2] file:text-[#8F95B2] file:border-0 file:border-l-[1px] file:border-[#C1C4D6] file:px-2 file:rounded file:bg-transparent file:absolute file:right-0 file:top-0 file:bottom-0 file:text-foreground file:text-xs file:font-medium"
           />
         </div>
@@ -183,7 +208,9 @@
         <div class="mb-5 mt-3">
           <div class="flex items-center gap-3">
             <label for="" class="text-sm font-inter font-normal text-[#333333]"
-              >Preferred mode of communication?*</label
+              >Preferred mode of communication?<span class="text-[#ff0000]"
+                >*</span
+              ></label
             >
 
             <label
@@ -232,7 +259,9 @@
         </div>
         <div class="mb-5">
           <label for="" class="text-sm font-inter font-normal text-[#333333]"
-            >How did you get to know about us?*</label
+            >How did you get to know about us?<span class="text-[#ff0000]"
+              >*</span
+            ></label
           >
           <div class="flex items-center gap-3 mt-2">
             <label
@@ -350,8 +379,16 @@ definePageMeta({ layout: "owner" });
 import useVuelidate from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 
-const languages = ["English",'Hindi','kannada','Telugu','Tamil','Malayalam','Others'];
-const occupations = ["Self-Employed",'Salaried','Home Maker','Others'];
+const languages = [
+  "English",
+  "Hindi",
+  "kannada",
+  "Telugu",
+  "Tamil",
+  "Malayalam",
+  "Others",
+];
+const occupations = ["Self-Employed", "Salaried", "Home Maker", "Others"];
 
 // Form inputs
 const state = reactive<{
@@ -385,6 +422,21 @@ const state = reactive<{
   profle_picture: "",
   refered_by: "",
 });
+
+// Validation rules
+const rules = {
+  full_name: { required },
+  mobile: { required },
+  email: { required },
+  language: { required },
+  address: { required },
+  pincode: { required },
+  city: { required },
+  employer: { required },
+  occupation: { required },
+  profle_picture: { required },
+};
+const v$ = useVuelidate(rules, state);
 </script>
 
 <style scoped>

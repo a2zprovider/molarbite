@@ -1,7 +1,10 @@
 <template>
   <!-- Base Phone -->
   <div class="md:col-span-2">
-    <label v-if="label" class="label-style" :for="label">{{ label }}</label>
+    <label v-if="label" class="label-style" :for="label"
+      >{{ label }}
+      <span v-if="isRequired" class="red-asterisk">*</span>
+    </label>
     <vue-tel-input
       id="phoneNumber"
       :modelValue="modelValue"
@@ -36,6 +39,7 @@ interface Props {
   placeholder?: string;
   error?: string | boolean;
   errorMessage?: string | boolean;
+  isRequired?: boolean;
 }
 
 const _props = defineProps<Props>();
@@ -55,5 +59,8 @@ const handleValidation = ($event: Event): void => {
 }
 :deep(.vti__input) {
   @apply bg-transparent;
+}
+.red-asterisk {
+  color: #FF0000;
 }
 </style>
